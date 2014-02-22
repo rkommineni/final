@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  publish_date: 2014-02-21
+  genre: MyString
+  image_url: MyText
+
+two:
+  title: MyString
+  publish_date: 2014-02-21
+  genre: MyString
+  image_url: MyText
