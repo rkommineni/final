@@ -1,2 +1,33 @@
-<h1>Book#show</h1>
-<p>Find me in app/views/book/show.html.erb</p>
+<div>
+	<h1> <%= @book.title %></h1>
+</div>
+
+<!-- list general information about the book -->
+<div>
+	<%= image_tag @book.image_url %>
+	<div>
+		<p><strong>Author: </strong>
+		<% @authors.each do |author| %>
+			<%= author.name%>  </p>
+		<% end %>
+		<p><strong>Genre: </strong><%= @book.genre %></p>
+		<p><strong>Published Date: </strong><%= @book.publish_date %></p>
+	</div>
+</div>
+
+<!-- list all chapters of a book -->
+<div>
+	<% @book.chapters.each do |chapter| %>
+		<p><%= chapter.title %>      <%= chapter.description %></p>
+	<% end %>
+</div>
+
+<!-- list all reviews of a book -->
+<div>
+	<p><strong> Reviews </strong></p>
+	<p> <%= link_to "Write a review", "/reviews/new" %>
+	<% @book.reviews.each do |reivew| %>
+		<p><%= review.users.name%> ; <%= review.published_date %> ; <%= review.rating %></p>
+		<p><%= review.description %></p>
+	<% end %>
+</div>

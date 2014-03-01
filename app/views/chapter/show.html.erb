@@ -1,2 +1,19 @@
-<h1>Chapter#show</h1>
-<p>Find me in app/views/chapter/show.html.erb</p>
+<!-- chapter header -->
+<div>
+	<p><%= @chapter.title %> ; <%= @chapter.books.title %><p>
+</div>
+
+<!-- chapter content -->
+<div>
+	<p><%= @chapter.content_url %></p>
+</div>
+
+<!-- chapter comments -->
+<div>
+	<p><strong> Comments </strong></p>
+	<p> <%= link_to "Post a comment", "/comments/new" %>
+	<% @chapter.comments.each do |comment| %>
+		<p><%= comment.users.name%> ; <%= comment.published_date %></p>
+		<p><%= comment.description %></p>
+	<% end %>
+</div>

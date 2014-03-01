@@ -1,6 +1,6 @@
 class ChapterController < ApplicationController
   def show
-  	the_chapter_id = params[:id]
+  	the_chapter_id = params[:chapter_id]
   	the_book_id = params[:book_id]
   	@chapter = Chapter.where{:book_id => the_book_id, :id => the_chapter_id}
   end

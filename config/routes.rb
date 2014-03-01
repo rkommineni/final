@@ -1,4 +1,6 @@
 Final::Application.routes.draw do
+  get "review/new"
+  get "review/create"
   root "home#index"
   resources :books
   resources :chapters

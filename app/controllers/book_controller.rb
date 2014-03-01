@@ -1,7 +1,8 @@
 class BookController < ApplicationController
   def show
   	the_book_id = params[:id]
-  	@book = Book.find_by :id => the_book_id
+  	@book = Book.find_by (:id => the_book_id)
+    @authors = @book.users
   	@chapters = Chapter.all
   end
 
