@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140301200838) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "summary"
+  end
 
   create_table "chapters", force: true do |t|
     t.string   "title"
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140301200838) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "number"
+  end
 
   create_table "comments", force: true do |t|
     t.text     "description"

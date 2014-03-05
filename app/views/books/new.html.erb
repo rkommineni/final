@@ -1,0 +1,38 @@
+<div>
+	<h1> Add a New book </h1>
+</div>
+
+<div>
+	<%= form_tag books_url, :method => 'post' do %>
+		<div>
+			<%= label_tag :title %>
+			<%= text_field_tag :title, "", placeholder: 'Enter book title here' %>
+		</div>
+
+		<div>
+			<!-- need to figure out how to add date using select list -->
+			<%= label_tag :date %>
+			<%= text_field_tag :date, "" %>
+		</div>
+
+		<div>
+			<%= label_tag :genre %>
+			<%= text_field_tag :genre, "" %>
+		</div>
+
+		<!-- these 2 areas may not be needed when book is first created -->
+		<div>
+			<%= label_tag :image_url %>
+			<%= url_field_tag :image_url, "", placeholder: 'Enter a book cover url' %>
+		</div>
+
+		<div>
+			<label for="summary"> Plot Summary: </label>
+			<input type="text" name="summary" id="summary" placeholder:'Enter your book plot summary here' %>
+		</div>
+	
+		<div>
+			<%= submit_tag 'Add Book' %>
+		</div>
+	<% end %>
+</div>
