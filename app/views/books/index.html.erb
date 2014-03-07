@@ -1,4 +1,6 @@
-<% @books.in_groups_of(4, false).each_with_index do |group, index| %>
+<div>
+<h2> Check out newly published books </h2>
+<% @new_books.in_groups_of(4, false).each_with_index do |group, index| %>
   <div class="row top-margin">
     <% group.each do |book| %>
       <div class='col-lg-3 test'>
@@ -15,4 +17,25 @@
     <% end %>
   </div>
 <% end %>
+</div>
+<br>
+
+
+<!-- need to make sure the books under each category is the popular books -->
+<!-- also need to cut the title if the characters is too long -->
+<br>
+<h2> Today's Top 4 Genres </h2>
+<div class = "row">
+  <% @top_genre.each do |g, c| %>
+    <div class = "col-md-3" >
+    <h4> <%= g %> </h4>
+    <% counter = 0 %>
+    <% @books.each do |book| %>
+      <% if book.genre == g && counter < 4 %>
+        <p><a href = "/books/<%= book.id %>"> <%= book.title %> </a></p>
+        <% counter = counter + 1 %>
+      <% end %>
+    <% end %> </div>
+  <% end %>
+</div>
 

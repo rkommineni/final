@@ -3,6 +3,19 @@ class BooksController < ApplicationController
 	#this will be our main page, for now this page only shows all books in the database
 	def index
 		@books = Book.all
+
+		#for showing most popular books based on ratings
+
+		#for showing most commented books
+
+		#for showing authors who published large amount of books
+
+		#for showing newly published books
+		@new_books = Book.order("publish_date desc").limit(4)
+
+		#for showing top 4 genres (that has most books)
+		genre_count = Book.group(:genre).count.to_a.sort{|a,b| b[1] <=>a[1]}
+		@top_genre = genre_count[0..3]
 	end
 
       def books
@@ -13,10 +26,10 @@ class BooksController < ApplicationController
 
 	# homepage for each individual book
 	def show
-		# need to reset the book_id everytime rails starts since it's auto increment
 		the_book_id = params["id"]
 		@book = Book.find_by :id => the_book_id
-		#need to add author and chapters
+		@authors = @book.users
+		@chapters = @book.chapters
 	end
 
 
