@@ -1,0 +1,16 @@
+<!-- list general information about the book -->
+<div>
+	<%= image_tag @book.image_url %>
+	<div>
+		<!-- need to add author information -->
+		<p><strong>Genre: </strong><%= @book.genre %></p>
+		<p><strong>Published Date: </strong><%= @book.publish_date %></p>
+	</div>
+</div>
+
+<!--show book title -->
+<div>
+	<h1> <%= @book.title %></h1>
+</div>
+
+<!-- list all chapters of a book -->
