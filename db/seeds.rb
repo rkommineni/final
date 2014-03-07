@@ -10,11 +10,6 @@ books = [{:title => "Nudge: Improving Decisions About Health, Wealth, and Happin
               {:title => "Star Wars: A Long Time Ago..., Book 2: Dark Encounters", :publish_date => "August 5th 2002", :genre => "Science Fiction", :image_url => "http://d202m5krfqbpi5.cloudfront.net/books/1348753583l/78722.jpg", :summary => "A long time ago, in a decade that was far, far out there, moviedom's most beloved characters made the transition from silver screen to printed page in a comic-book series that was truly out of this world. Each new issue of Marvel's Star Wars comic-book series that launched in 1977 was stranger and crazier than the next. Where else could you find the friendship between Luke Skywalker and C-3PO turning the heart of Valance, a ruthless, cyborg bounty hunter? Or a team of vengeful imperial brothers, led by Baron Orman Tagge, who seek to bring the frozen fury of their Omega Frost to Tatooine and the Rebel Alliance fleet? Or an early version of Jabba the Hutt as a humanoid seal instead of a drooling space slug? Now, for the first time ever, the entire Marvel Star Wars comic-book series is collected in book format, bringing these hard-to-find gems from dusty collectors' boxes to your home library. Whether you're a tried-and-true Star Wars fan, a lover of pop culture, or a collector of kitsch, each stand-alone book in this seven-volume collection will amaze, amuse, and delight."},
               {:title => "Memoirs of a Geisha", :publish_date => "November 15th 2005", :genre => "Historical Fiction", :image_url => "http://d202m5krfqbpi5.cloudfront.net/books/1388367666l/930.jpg", :summary => "In this literary tour de force, novelist Arthur Golden enters a remote and shimmeringly exotic world. For the protagonist of this peerlessly observant first novel is Sayuri, one of Japan's most celebrated geisha, a woman who is both performer and courtesan, slave and goddess.We follow Sayuri from her childhood in an impoverished fishing village, where in 1929, she is sold to a representative of a geisha house, who is drawn by the child's unusual blue-grey eyes. From there she is taken to Gion, the pleasure district of Kyoto. She is nine years old. In the years that follow, as she works to pay back the price of her purchase, Sayuri will be schooled in music and dance, learn to apply the geisha's elaborate makeup, wear elaborate kimono, and care for a coiffure so fragile that it requires a special pillow. She will also acquire a magnanimous tutor and a venomous rival. Surviving the intrigues of her trade and the upheavals of war, the resourceful Sayuri is a romantic heroine on the order of Jane Eyre and Scarlett O'Hara. And Memoirs of a Geisha is a triumphant work - suspenseful, and utterly persuasive."}]
 
-#populate users table/model
-#populate authors table/model
-#populate chapters for the books
-#populate some comments and reviews
-
 Book.destroy_all
 
 books.each do |book|
@@ -26,3 +21,44 @@ books.each do |book|
   b.summary = book[:summary]
   b.save
 end
+
+#populate users table/model
+#look into what are industry standards for password
+users = [{:name => "Richard H. Thaler", :email => "rthaler@nudge.com", :username => "rthaler", :image_url => "", :password => "nudge", :password_confirmation => "nudge"},
+              {:name => "Jonathan Maberry", :email => "jmaberry@rot.com", :username => "jmaberry", :image_url => "", :password => "rot", :password_confirmation => "rot"},
+              {:name => "Allie Brosh", :email => "abrosh@hyper.com", :username => "abrosh", :image_url => "", :password => "hyper", :password_confirmation => "hyper"},
+              {:name => "S.E.Hinton", :email => "shinton@outsiders.com", :username => "shinton", :image_url => "", :password => "outsiders", :password_confirmation => "outsiders"},
+              {:name => "J.R.R.Tolkien", :email => "jrrtolkien@lotr.com", :username => "jrrtolkien", :image_url => "", :password => "lotr", :password_confirmation => "lotr"},
+              {:name => "Mario Puzo", :email => "mpuzo@godfather.com", :username => "mpuzo", :image_url => "", :password => "godfather", :password_confirmation => "godfather"},
+              {:name => "J.K.Rowling", :email => "jkrowling@harry.com", :username => "jkrowling", :image_url => "", :password => "harry", :password_confirmation => "harry"},
+              {:name => "Alan Dean Foster", :email => "adean@trek.com", :username => "adean", :image_url => "", :password => "trek", :password_confirmation => "trek"},
+              {:name => "Terry Austin", :email => "taustin@wars.com", :username => "taustin", :image_url => "", :password => "wars", :password_confirmation => "wars"},
+            {:name => "Arthur Golden", :email => "agolden@geisha.com", :username => "agolden", :image_url => "", :password => "geisha", :password_confirmation => "geisha"}]
+
+User.destroy_all
+
+users.each do |user|
+  u = User.new
+  u.name = user[:name]
+  u.email = user[:email]
+  u.username = user[:username]
+  u.image_url = user[:image_url]
+  u.password = user[:password]
+  u.password_confirmation = user[:password_confirmation]
+  u.save
+end
+
+#populate authors table/model
+bFirst = Book.first.id
+uFirst = User.first.id
+
+(0..9).each do |id|
+  a = Author.new
+  a.book_id = id + bFirst
+  a.user_id = id + uFirst
+  a.save
+end
+
+#populate chapters for the books
+
+#populate some comments and reviews

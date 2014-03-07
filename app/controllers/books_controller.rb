@@ -1,9 +1,15 @@
 class BooksController < ApplicationController
-	
+
 	#this will be our main page, for now this page only shows all books in the database
-	def index  
+	def index
 		@books = Book.all
 	end
+
+      def books
+        user = User.find(params[:user_id])
+        @books = user.books
+        render "index"
+      end
 
 	# homepage for each individual book
 	def show
@@ -24,12 +30,18 @@ class BooksController < ApplicationController
   		b = Book.new
   		b.title = params[:title]
   		b.genre = params[:genre]
-    	b.image_url = params[:image_url]
-    	b.publish_date = Time.now
-    	b.save
+    	     b.image_url = params[:image_url]
+    	     b.publish_date = params[:publish_date]
+          b.summary = params[:summary]
+    	     b.save
+
+           a = Author.new
+           a.book_id = b.id
+           a.user_id = session[:user_id]
+           a.save
 
     	#need to change the redirect path
-    	redirect_to books_path
+    	redirect_to user_url(session[:user_id])
 	end
 
 	def edit

@@ -1,11 +1,23 @@
-<h1> Login </h1>
+<div class='container'>
+  <h2>Welcome!</h2>
+</div>
+
+<div class="row">
 <%= form_tag "/sessions" do%>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></i></span>
+    <input class="form-control" type="text" placeholder="User name" name="username">
+  </div>
   <br>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
+
+  <div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+    <input class="form-control" type="password" placeholder="Password" name="password">
+  </div>
   <br>
-  <%= submit_tag "Login!" %>
+
+  <%= submit_tag "Login" %>
 
 <% end %>
+</div>

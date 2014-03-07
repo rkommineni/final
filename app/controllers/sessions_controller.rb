@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
 
-  before_action :not_allowed, :except[:create, :destroy, :new]
+  #also look into how to do cookie based sessions
+
+  before_action :not_allowed, :except => [:create, :destroy, :new]
 
   def not_allowed
     #redirect to root page as we do not want to show the list of users to anyone

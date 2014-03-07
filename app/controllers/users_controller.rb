@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, :except => [:create]
-  before_action :identify_user
+  before_action :require_login, :except => [:create, :new]
+  before_action :identify_user, :except => [:create, :new]
 
   #before every action identify the user that is logged in
   def identify_user
@@ -19,7 +19,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    #redirect to root page as we do not want to show the list of users to anyone
+    #redirect to root page as we do not want to show the list of users to anyone even
+    #if any user is logged in (check this with Linda)
     redirect_to root_url
   end
 
@@ -34,6 +35,7 @@ class UsersController < ApplicationController
       if User.find_by(username: params[:username])
         redirect_to root_url, notice: "Username already exists."
       else
+        #this can be moved to another method in future(also to be used by update method)
         user = User.new
         user.name = params[:name]
         user.email = params[:email]
@@ -42,6 +44,7 @@ class UsersController < ApplicationController
 
         #have to implement bcrypt for secure password i.e., not saving password
         user.password = params[:password]
+        user.password_confirmation = params[:password_confirmation]
         user.save
         #also check if database save was successful without any errors
         #start the session for the user immediately after sign up

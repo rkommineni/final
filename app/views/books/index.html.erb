@@ -1,4 +1,18 @@
-<% @books.each do |book| %>
-	<%= image_tag book.image_url %>
-	<%= book.id %>
+<% @books.in_groups_of(4, false).each_with_index do |group, index| %>
+  <div class="row top-margin">
+    <% group.each do |book| %>
+      <div class='col-lg-3 test'>
+        <!-- SHOW THE IMAGE OF THE COMIC BOOK AND MAKE THE ENTIRE IMAGE A LINK.
+             ATTACH THE CLASS OF 'image-responsive' TO THIS LINK -->
+             <a href = "/books/<%= book.id %>">
+              <% if book.image_url != nil && book.image_url != "" %>
+              <%= image_tag book.image_url, :class => "image-responsive" %>
+              <% else %>
+              <p class = "image-responsive unavailable"><%= book.title %></p>
+              <% end %>
+            </a>
+      </div>
+    <% end %>
+  </div>
 <% end %>
+

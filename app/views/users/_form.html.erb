@@ -1,23 +1,45 @@
 <!-- Stylize this form -->
 
 <!-- use patch for updates and also use the code to display database errors -->
+<!-- Use javascript to write validation rules before submitting the form -->
 
 <%= form_tag "/users" do%>
-  <%= label_tag :name %>
-  <%= text_field_tag :name %>
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+    <input class="form-control" type="text" placeholder="Full Name" name="name">
+  </div>
   <br>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+    <input class="form-control" type="text" placeholder="Email address" name="email">
+  </div>
   <br>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></i></span>
+    <input class="form-control" type="text" placeholder="User name" name="username">
+  </div>
   <br>
-  <%= label_tag :image_url %>
-  <%= text_field_tag :image_url %>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></i></span>
+    <input class="form-control" type="text" placeholder="Image url" name="image_url">
+  </div>
   <br>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
+
+  <div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+    <input class="form-control" type="password" placeholder="Password" name="password">
+  </div>
   <br>
-  <%= submit_tag "Register!" %>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+    <input class="form-control" type="password" placeholder="Confirm Password" name="password_confirmation">
+  </div>
+  <br>
+  <%= submit_tag "Register" %>
 
 <% end %>
+

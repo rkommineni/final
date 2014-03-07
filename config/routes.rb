@@ -1,7 +1,11 @@
 Final::Application.routes.draw do
 
+  root "books#index"
+
   get "review/new"
   get "review/create"
+
+  get "/users/:user_id/books" => "books#books"
 
   resources :books
   resources :chapters
@@ -9,7 +13,7 @@ Final::Application.routes.draw do
   resources :users
   resources :sessions
 
-  root "books#index"
+  get "/logout" => "sessions#destroy", as: 'logout'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

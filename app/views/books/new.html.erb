@@ -1,38 +1,39 @@
 <div>
 	<h1> Add a New book </h1>
 </div>
+<%= form_tag "/books" do%>
 
-<div>
-	<%= form_tag books_url, :method => 'post' do %>
-		<div>
-			<%= label_tag :title %>
-			<%= text_field_tag :title, "", placeholder: 'Enter book title here' %>
-		</div>
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>
+    <input class="form-control" type="text" placeholder="Title" name="title">
+  </div>
+  <br>
 
-		<div>
-			<!-- need to figure out how to add date using select list -->
-			<%= label_tag :date %>
-			<%= text_field_tag :date, "" %>
-		</div>
+  <!-- <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></i></span>
+    <input class="form-control" type="text" placeholder="Author" name="author">
+  </div>
+  <br> -->
 
-		<div>
-			<%= label_tag :genre %>
-			<%= text_field_tag :genre, "" %>
-		</div>
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" placeholder="Genre" name="genre">
+  </div>
+  <br>
 
-		<!-- these 2 areas may not be needed when book is first created -->
-		<div>
-			<%= label_tag :image_url %>
-			<%= url_field_tag :image_url, "", placeholder: 'Enter a book cover url' %>
-		</div>
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" placeholder="Image url" name="image_url">
+  </div>
+  <br>
 
-		<div>
-			<label for="summary"> Plot Summary: </label>
-			<input type="text" name="summary" id="summary" placeholder:'Enter your book plot summary here' %>
-		</div>
-	
-		<div>
-			<%= submit_tag 'Add Book' %>
-		</div>
-	<% end %>
-</div>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" placeholder="Summary" name="summary">
+  </div>
+  <br>
+
+  <%= submit_tag "Add Book" %>
+
+<% end %>
+
