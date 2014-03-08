@@ -1,9 +1,10 @@
 <!-- Display user details/Profile page -->
 
 <ul class="nav nav-pills nav-stacked">
+  <li><a href=<%= edit_user_url %>><i class="fa fa-user fa-fw"></i> Edit Profile</a></li>
   <li class="active"><a href=<%= user_url(session[:user_id]) + "/books" %>><i class="fa fa-home fa-fw"></i> My Books</a></li>
   <li><a href=<%= new_book_url %>><i class="fa fa-book fa-fw"></i> Add a Book</a></li>
-  <li><a href="#"><i class="fa fa-trash-o fa-lg"></i> Delete a Book</a></li>
+  <!-- <li><a href="#"><i class="fa fa-trash-o fa-lg"></i> Delete a Book</a></li> -->
   <li><a href="#"><i class="fa fa-cogs fa-fw"></i> Statistics</a></li>
 </ul>
 <!-- Decide on what should be displayed in profile page -->

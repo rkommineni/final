@@ -5,5 +5,32 @@
 <div class='row'>
   <!-- RENDER THE FORM PARTIAL HERE. -->
   <!-- populate user details using form partials -->
-  <%= render "form" %>
+  <%= form_tag "/users/#{@user.id}", :method => 'patch' do%>
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+    <input class="form-control" type="text" value="<%= @user.name%>" placeholder="Full Name" name="name">
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+    <input class="form-control" type="text" value="<%= @user.email%>" placeholder="Email address" name="email">
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></i></span>
+    <input class="form-control" type="text" value="<%= @user.username%>" placeholder="User name" name="username">
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></i></span>
+    <input class="form-control" type="text" value="<%= @user.image_url%>" placeholder="Image url" name="image_url">
+  </div>
+  <br>
+
+  <%= submit_tag "Save" %>
+
+<% end %>
 </div>

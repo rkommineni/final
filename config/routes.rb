@@ -9,6 +9,8 @@ Final::Application.routes.draw do
 
   resources :books
   resources :chapters
+  resources :reviews
+  resources :comments
 
   resources :users
   resources :sessions

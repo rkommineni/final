@@ -1,0 +1,33 @@
+<div>
+  <h1> Add a New Review</h1>
+</div>
+<%= form_tag "/reviews" do%>
+<!-- Do form validations -->
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>
+    <input class="form-control" type="text" placeholder="Description" name="description">
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" placeholder="Rate It" name="rating">
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+    <input class="form-control" type="text" value="<%= @user.name%>" placeholder="Author" name="author" readonly>
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @book.title%>" placeholder="Book Title" name="book_name" readonly>
+  </div>
+  <br>
+
+  <%= submit_tag "Submit Review" %>
+
+<% end %>
+

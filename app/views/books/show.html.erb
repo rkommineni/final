@@ -1,28 +1,52 @@
 <!-- list general information about the book -->
 <div class='row'>
   <div class='col-md-5'>
-    <!-- INSERT COMIC COVER IMAGE HERE WITH ERB.
-         ATTACH THE CLASS of 'img-responsive' TO THIS LINK -->
-             <a href = "/books/<%= @book.id %>">
-              <% if @book.image_url != nil && @book.image_url != "" %>
-              <%= image_tag @book.image_url, :class => "img-responsive" %>
-              <% else %>
-              <p class = "img-responsive unavailable"><%= @book.title %></p>
-              <% end %>
-            </a>
+    <a href = "/books/<%= @book.id %>">
+    <% if @book.image_url != nil && @book.image_url != "" %>
+      <%= image_tag @book.image_url, :class => "img-responsive" %>
+    <% else %>
+      <p class = "img-responsive unavailable"><%= @book.title %></p>
+    <% end %>
+    </a>
   </div>
+
   <div class='col-md-7'>
     <h1><%= @book.title %></h1>
     <h4><%= @book.summary %></h4>
     <p><strong>Genre: </strong><%= @book.genre %></p>
     <p><strong>Published Date: </strong><%= @book.publish_date %></p>
-    <!-- INSERT LINK TO DELETE A COMIC BOOK HERE.
-         ATTACH A CLASS of 'btn btn-warning' TO THIS LINK.
-         ALSO INCLUDE A CONFIRMATION MESSAGE 'Are you sure?' -->
+
+    <%= link_to 'Chapters', chapters_url + "?book_id=#{@book.id}", class: 'btn btn-warning' %>
+    <% if @user != '' %>
+      <%= link_to 'Submit Review', new_review_url + "?book_id=#{@book.id}", class: 'btn btn-warning' %>
+      <% if Author.where("book_id = #{@book.id} and user_id = #{@user.id}") != [] %>
+        <%= link_to 'Add Chapter', new_chapter_url + "?book_id=#{@book.id}", class: 'btn btn-warning' %>
+        <%= link_to 'Add Author', "/books/author/#{@book.id}", class: 'btn btn-warning' %>
          <!-- how to link to delete link
         only the author/creator can delete/edit the book details. also chapters can be added-->
-         <%= link_to 'Delete Book', "/books/delete/#{@book.id}", data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+        <%= link_to 'Delete Book', "/books/delete/#{@book.id}", data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+        <% end%>
+    <% end %>
   </div>
+</div>
+
+<div class ="container">
+  <h2>Reviews</h2>
+  <hr>
+  <% if @book.reviews != [] %>
+    <% @book.reviews.each do |review| %>
+          <!-- display review info -->
+      <div class = "row">
+            <!-- also display rating and user name -->
+            <!-- also links to edit and delete the review -->
+        <p> <%= review.description %>
+      </div>
+    <% end%>
+  <% else %>
+    <div class = "row">
+      <h4>No Reviews yet</h4>
+    </div>
+  <% end %>
 </div>
 
 		<!-- need to add author information -->

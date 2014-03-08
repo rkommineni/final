@@ -1,2 +1,39 @@
-<h1>Chapters#new</h1>
-<p>Find me in app/views/chapters/new.html.erb</p>
+<div>
+  <h1> Add a New chapter</h1>
+</div>
+<%= form_tag "/chapters" do%>
+<!-- Do form validations -->
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>
+    <input class="form-control" type="text" placeholder="Title" name="title">
+  </div>
+  <br>
+
+  <!-- <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+    <input class="form-control" type="text" placeholder="Author" name="author">
+  </div>
+  <br> -->
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" placeholder="Description" name="description">
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" placeholder="Content url" name="content_url">
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @book.title%>" placeholder="Book Title" name="book_name" readonly>
+  </div>
+  <br>
+
+  <%= submit_tag "Add Chapter" %>
+
+<% end %>
+

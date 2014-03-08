@@ -1,2 +1,30 @@
-<h1>Chapters#index</h1>
-<p>Find me in app/views/chapters/index.html.erb</p>
+<div class='col-md-5'>
+    <a href = "/books/<%= @book.id %>">
+    <% if @book.image_url != nil && @book.image_url != "" %>
+      <%= image_tag @book.image_url, :class => "img-responsive" %>
+    <% else %>
+      <p class = "img-responsive unavailable"><%= @book.title %></p>
+    <% end %>
+    </a>
+  </div>
+<h1>Chapters</h1>
+<hr>
+<% if @book.chapters != [] %>
+<% @book.chapters.order("number asc").in_groups_of(4, false).each_with_index do |group, index| %>
+  <div class="row top-margin">
+    <% group.each do |chapter| %>
+      <div class='col-lg-3 test'>
+        <!-- SHOW THE IMAGE OF THE COMIC BOOK AND MAKE THE ENTIRE IMAGE A LINK.
+             ATTACH THE CLASS OF 'image-responsive' TO THIS LINK -->
+             <a href = "/chapters/<%= chapter.id %>">
+              <%= chapter.number + ". " + chapter.title%>
+            </a>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<% else %>
+  <div class="row top-margin">
+    <p> No available chapters yet </p>
+  </div>
+<% end %>

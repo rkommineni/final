@@ -64,12 +64,11 @@ class UsersController < ApplicationController
   def update
     #check on all database activites
     @user.name = params[:name]
-    @user.email = params[:email]
-    @user.username = params[:username]
+    #right now do not let user to change username and email address
+    #@user.email = params[:email]
+    #@user.username = params[:username]
     @user.image_url = params[:image_url]
 
-    #have to implement bcrypt for secure password i.e., not saving password
-    @user.password = params[:password]
     @user.save
 
     redirect_to "/users/:#{@user.id}", notice: "Changes saved successfully!"

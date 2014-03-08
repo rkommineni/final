@@ -1,2 +1,49 @@
-<h1>Chapters#show</h1>
-<p>Find me in app/views/chapters/show.html.erb</p>
+<!-- list general information about the book -->
+<div class='row'>
+  <div class='col-md-5'>
+    <a href = "/books/<%= @book.id %>">
+    <% if @book.image_url != nil && @book.image_url != "" %>
+      <%= image_tag @book.image_url, :class => "img-responsive" %>
+    <% else %>
+      <p class = "img-responsive unavailable"><%= @book.title %></p>
+    <% end %>
+    </a>
+  </div>
+
+  <div class='col-md-7'>
+    <h1><%= @chapter.number + ". " + @chapter.title %></h1>
+    <h4><%= @chapter.description %></h4>
+
+    <% if @user != '' %>
+      <%= link_to 'Comment', new_comment_url + "?chapter_id=#{@chapter.id}", class: 'btn btn-warning' %>
+      <% if Author.where("book_id = #{@chapter.book.id} and user_id = #{@user.id}") != [] %>
+         <!-- how to link to delete link
+        only the author/creator can delete/edit the book details. also chapters can be added-->
+        <%= link_to 'Delete Chapter', "/chapters/delete/#{@chapter.id}", data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+        <% end%>
+    <% end %>
+  </div>
+</div>
+
+<div class ="container">
+  <h2>Comments</h2>
+  <hr>
+  <% if @chapter.comments != [] %>
+    <% @chapter.comments.each do |comment| %>
+          <!-- display review info -->
+      <div class = "row">
+            <!-- also display user name -->
+            <!-- also links to delete the comment -->
+        <p> <%= comment.description %>
+      </div>
+    <% end%>
+  <% else %>
+    <div class = "row">
+      <h4>No Comments yet</h4>
+    </div>
+  <% end %>
+</div>
+
+    <!-- need to add author information -->
+
+<!-- list all chapters of a book -->

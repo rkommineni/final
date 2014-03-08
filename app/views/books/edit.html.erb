@@ -1,0 +1,39 @@
+<div>
+  <h1> Edit book </h1>
+</div>
+<%= form_tag "/books", :method => 'patch' do%>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>
+    <input class="form-control" type="text" value="<%= @book.title%>" placeholder="Title" name="title">
+  </div>
+  <br>
+
+  <!-- <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+    <input class="form-control" type="text" placeholder="Author" name="author">
+  </div>
+  <br> -->
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @book.genre%>" placeholder="Genre" name="genre">
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @book.image_url%>" placeholder="Image url" name="image_url">
+  </div>
+  <br>
+
+  <div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @book.summary%>" placeholder="Summary" name="summary">
+  </div>
+  <br>
+
+  <%= submit_tag "Save" %>
+
+<% end %>
+
