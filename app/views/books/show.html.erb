@@ -15,6 +15,11 @@
     <h4><%= @book.summary %></h4>
     <p><strong>Genre: </strong><%= @book.genre %></p>
     <p><strong>Published Date: </strong><%= @book.publish_date %></p>
+    <p><strong>Author: </strong>
+      <% @book.users.each do |author| %>
+        <%= author.name %>
+      <% end %>
+    </p>
 
     <%= link_to 'Chapters', chapters_url + "?book_id=#{@book.id}", class: 'btn btn-warning' %>
     <% if @user != '' %>
@@ -22,10 +27,23 @@
       <% if Author.where("book_id = #{@book.id} and user_id = #{@user.id}") != [] %>
         <%= link_to 'Add Chapter', new_chapter_url + "?book_id=#{@book.id}", class: 'btn btn-warning' %>
         <%= link_to 'Add Author', "/books/author/#{@book.id}", class: 'btn btn-warning' %>
+
          <!-- how to link to delete link
         only the author/creator can delete/edit the book details. also chapters can be added-->
         <%= link_to 'Delete Book', "/books/delete/#{@book.id}", data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
         <% end%>
+    <% end %>
+  </div>
+
+  <div class='col-md-5'>
+    <p><strong>List of Chapters </strong></p>
+    <% @chapters.each do |chapter| %>
+      <p>
+      <%= chapter.number %>
+      <%= chapter.title %>
+      <%= chapter.description %>
+      <%= chapter.created_at %>
+      </p>
     <% end %>
   </div>
 </div>

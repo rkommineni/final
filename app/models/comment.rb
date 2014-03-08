@@ -1,4 +1,4 @@
 class Comment < ActiveRecord::Base
-  belongs_to :users
-  belongs_to :chapters
+  belongs_to :user
+  belongs_to :chapter
 end

@@ -1,4 +1,4 @@
 class BookShelf < ActiveRecord::Base
-  belongs_to :users
-  belongs_to :books
+  belongs_to :user
+  belongs_to :book
 end
