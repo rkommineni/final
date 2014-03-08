@@ -56,6 +56,11 @@ class UsersController < ApplicationController
 
   #implement following functionalities only if the right user is logged in, use filters
   def show
+    @private_profile = false
+    current_user = params[:user_id]
+    if session[:user_id].blank? || session[:user_id] != current_user
+      @private_profile = true
+    end 
   end
 
   def edit
