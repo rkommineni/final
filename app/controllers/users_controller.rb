@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, :except => [:create, :new]
-  before_action :identify_user, :except => [:create, :new]
+  before_action :require_login, :except => [:create, :new, :show]
+  before_action :identify_user, :except => [:create, :new, :show]
 
   #before every action identify the user that is logged in
   def identify_user

@@ -23,7 +23,7 @@ class BooksController < ApplicationController
 			end
 			r[book] = sum
 		end
-		@rating_counts = r.sort_by{|k,v| v}[0..3]
+		@rating_counts = r.sort_by{|k,v| v}
 
 
 		#for showing authors who published a large amount of books

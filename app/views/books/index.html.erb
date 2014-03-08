@@ -21,7 +21,6 @@
 
 -->
 
-<!-- need to make sure the books under each category is the popular books -->
 <!-- also need to cut the title if the characters is too long -->
 <br>
 <div>
@@ -32,7 +31,7 @@
     <div class = "col-md-3" >
     <h4> <%= g %> </h4>
     <% counter = 0 %>
-    <% @books.each do |book| %>
+    <% @rating_counts.each do |book, c| %>
       <% if book.genre == g && counter < 4 %>
         <p><a href = "/books/<%= book.id %>"> <%= book.title %> </a></p>
         <% counter = counter + 1 %>
@@ -64,7 +63,7 @@
 
   <div class = "col-md-3">
     <h4> Top Rating Books </h4>
-    <% @rating_counts.each do |b, c| %>
+    <% @rating_counts[0..3].each do |b, c| %>
       <p><a href = "/books/<%= b.id %>"> <%= b.title %> </a></p>
     <% end %>
   </div>
