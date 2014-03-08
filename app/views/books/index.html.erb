@@ -1,11 +1,10 @@
+<!--
 <div>
 <h2> Check out newly published books </h2>
 <% @new_books.in_groups_of(4, false).each_with_index do |group, index| %>
   <div class="row top-margin">
     <% group.each do |book| %>
       <div class='col-lg-3 test'>
-        <!-- SHOW THE IMAGE OF THE COMIC BOOK AND MAKE THE ENTIRE IMAGE A LINK.
-             ATTACH THE CLASS OF 'image-responsive' TO THIS LINK -->
              <a href = "/books/<%= book.id %>">
               <% if book.image_url != nil && book.image_url != "" %>
               <%= image_tag book.image_url, :class => "image-responsive" %>
@@ -20,11 +19,14 @@
 </div>
 <br>
 
+-->
 
 <!-- need to make sure the books under each category is the popular books -->
 <!-- also need to cut the title if the characters is too long -->
 <br>
+<div>
 <h2> Today's Top 4 Genres </h2>
+</div>
 <div class = "row">
   <% @top_genre.each do |g, c| %>
     <div class = "col-md-3" >
@@ -38,4 +40,41 @@
     <% end %> </div>
   <% end %>
 </div>
+
+
+
+
+<div>
+<h2> Author, Book and Comments </h2>
+</div>
+<div class = "row">
+  <div class = "col-md-3">
+    <h4> Newly Published Books </h4>
+    <% @new_books.each do |book| %>
+      <p><a href = "/books/<%= book.id %>"> <%= book.title %> </a></p>
+    <% end %>
+  </div>
+
+  <div class = "col-md-3">
+    <h4> Productive Authors </h4>
+    <% @authors.each do |a, c| %>    
+      <p><a href = "/users/<%= a.id %>"> <%= a.name %> </a></p>
+    <% end %>
+  </div>
+
+  <div class = "col-md-3">
+    <h4> Top Rating Books </h4>
+    <% @rating_counts.each do |b, c| %>
+      <p><a href = "/books/<%= b.id %>"> <%= b.title %> </a></p>
+    <% end %>
+  </div>
+
+  <div class = "col-md-3">
+    <h4> Most Commented Books </h4>
+    <% @comment_counts.each do |b, c| %>
+      <p><a href = "/books/<%= b.id %>"> <%= b.title %> </a></p>
+    <% end %>
+  </div>
+</div>
+
 
