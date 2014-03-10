@@ -28,20 +28,15 @@ class BooksController < ApplicationController
 		@books.each do |book|
 			b[book] = book.comments.count
 		end
-		@comment_counts = b.sort_by{|k, v| v}[0..3]
+		@comment_counts = (b.sort_by{|k, v| v}.reverse)[0..3]
 
 		#for showing most popular books based on ratings
 		#double check the result
 		r = Hash.new
 		@books.each do |book|
-			reviews = book.reviews
-			sum = 0
-			reviews.each do |review|
-				sum = sum + review.ratings.count
-			end
-			r[book] = sum
+			r[book] = book.reviews.sum('rating')
 		end
-		@rating_counts = r.sort_by{|k,v| v}
+		@rating_counts = r.sort_by{|k,v| v}.reverse
 
 
 		#for showing authors who published a large amount of books
@@ -50,9 +45,10 @@ class BooksController < ApplicationController
 		users.each do |u|
 			h[u] = u.books.count
 		end
-		@authors = h.sort_by{|k, v| v}[0..3]
+		@authors = (h.sort_by{|k, v| v}.reverse)[0..3]
 
 		#for showing newly published books
+          #also we can add newly added books
 		@new_books = Book.order("publish_date desc").limit(4)
 
 		#for showing top 4 genres (that has most books)

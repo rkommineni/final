@@ -1,7 +1,7 @@
 <div>
   <h1> Add a New chapter</h1>
 </div>
-<%= form_tag "/chapters" do%>
+<%= form_tag "/chapters?book_id=#{@book.id}" do%>
 <!-- Do form validations -->
   <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>

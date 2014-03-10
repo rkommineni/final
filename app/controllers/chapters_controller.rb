@@ -37,7 +37,11 @@ class ChaptersController < ApplicationController
     c.book_id = @book.id
     c.description = params[:description]
     c.content_url = params[:content_url]
-    c.number = @book.chapters.order("number desc").first.number + 1
+    if @book.chapters != []
+      c.number = @book.chapters.order("number desc").first.number + 1
+    else
+      c.number = 1
+    end
     c.save
 
     redirect_to chapters_url + "?book_id=#{@book.id}", :notice => "Chapter added successfully"

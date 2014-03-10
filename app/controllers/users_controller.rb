@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, :except => [:create, :new, :show]
-  before_action :identify_user, :except => [:create, :new, :show]
+  before_action :require_login, :except => [:create, :new, :show, :books]
+  before_action :identify_user, :except => [:create, :new, :show, :books]
 
   #before every action identify the user that is logged in
   def identify_user
@@ -22,6 +22,10 @@ class UsersController < ApplicationController
     #redirect to root page as we do not want to show the list of users to anyone even
     #if any user is logged in (check this with Linda)
     redirect_to root_url
+  end
+
+  def books
+    @show_user = User.find_by(:id => params[:user_id])
   end
 
   #Creae a new user profile
@@ -56,11 +60,7 @@ class UsersController < ApplicationController
 
   #implement following functionalities only if the right user is logged in, use filters
   def show
-    @private_profile = false
-    current_user = params[:user_id]
-    if session[:user_id].blank? || session[:user_id] != current_user
-      @private_profile = true
-    end 
+    @show_user = User.find_by(:id => params[:id])
   end
 
   def edit

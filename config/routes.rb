@@ -5,7 +5,7 @@ Final::Application.routes.draw do
   get "review/new"
   get "review/create"
 
-  get "/users/:user_id/books" => "books#books"
+  get "/users/:user_id/books" => "users#books"
 
   resources :books
   resources :chapters

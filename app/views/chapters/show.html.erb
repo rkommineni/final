@@ -1,26 +1,27 @@
 <!-- list general information about the book -->
 <div class='row'>
   <div class='col-md-5'>
-    <a href = "/books/<%= @book.id %>">
-    <% if @book.image_url != nil && @book.image_url != "" %>
-      <%= image_tag @book.image_url, :class => "img-responsive" %>
+    <a href = "/books/<%= @chapter.book.id %>">
+    <% if @chapter.book.image_url != nil && @chapter.book.image_url != "" %>
+      <%= image_tag @chapter.book.image_url, :class => "img-responsive" %>
     <% else %>
-      <p class = "img-responsive unavailable"><%= @book.title %></p>
+      <p class = "img-responsive unavailable"><%= @chapter.book.title %></p>
     <% end %>
     </a>
   </div>
 
   <div class='col-md-7'>
-    <h1><%= @chapter.number + ". " + @chapter.title %></h1>
+    <h1><%= (@chapter.number).to_s + ". " + @chapter.title %></h1>
     <h4><%= @chapter.description %></h4>
 
     <% if @user != '' %>
-      <%= link_to 'Comment', new_comment_url + "?chapter_id=#{@chapter.id}", class: 'btn btn-warning' %>
       <% if Author.where("book_id = #{@chapter.book.id} and user_id = #{@user.id}") != [] %>
          <!-- how to link to delete link
         only the author/creator can delete/edit the book details. also chapters can be added-->
         <%= link_to 'Delete Chapter', "/chapters/delete/#{@chapter.id}", data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
-        <% end%>
+      <% else %>
+        <%= link_to 'Comment', new_comment_url + "?chapter_id=#{@chapter.id}", class: 'btn btn-warning' %>
+      <% end%>
     <% end %>
   </div>
 </div>

@@ -36,6 +36,8 @@ end
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'bcrypt', '~> 3.1.2'
 
+gem "seed_dump", "~> 3.1.0"
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
