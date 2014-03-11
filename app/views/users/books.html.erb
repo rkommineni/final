@@ -1,6 +1,6 @@
 <div>
-<h2> My Books </h2>
-<% @show_user.books.in_groups_of(4, false).each_with_index do |group, index| %>
+<h2> Books </h2>
+<% @books.in_groups_of(4, false).each_with_index do |group, index| %>
   <div class="row top-margin">
     <% group.each do |book| %>
       <div class='col-lg-3 test'>

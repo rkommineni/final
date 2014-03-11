@@ -1,85 +1,64 @@
-Author.create!([
-  {book_id: 62, user_id: 33},
-  {book_id: 63, user_id: 34},
-  {book_id: 64, user_id: 35},
-  {book_id: 65, user_id: 36},
-  {book_id: 66, user_id: 37},
-  {book_id: 67, user_id: 38},
-  {book_id: 68, user_id: 39},
-  {book_id: 69, user_id: 40},
-  {book_id: 70, user_id: 41},
-  {book_id: 71, user_id: 42},
-  {book_id: 71, user_id: 42},
-  {book_id: 72, user_id: 43},
-  {book_id: 73, user_id: 44},
-  {book_id: 74, user_id: 45},
-  {book_id: 75, user_id: 46},
-  {book_id: 76, user_id: 47},
-  {book_id: 77, user_id: 48},
-  {book_id: 78, user_id: 49},
-  {book_id: 79, user_id: 50},
-  {book_id: 80, user_id: 51},
-  {book_id: 81, user_id: 52},
-  {book_id: 82, user_id: 53},
-  {book_id: 83, user_id: 54},
-  {book_id: 84, user_id: 55},
-  {book_id: 85, user_id: 56},
-  {book_id: 86, user_id: 57},
-  {book_id: 87, user_id: 58},
-  {book_id: 88, user_id: 59},
-  {book_id: 89, user_id: 60},
-  {book_id: 90, user_id: 61},
-  {book_id: 91, user_id: 62},
-  {book_id: 92, user_id: 63},
-  {book_id: 93, user_id: 64},
-  {book_id: 94, user_id: 65},
-  {book_id: 95, user_id: 66},
-  {book_id: 96, user_id: 67},
-  {book_id: 97, user_id: 68},
-  {book_id: 98, user_id: 69},
-  {book_id: 99, user_id: 70},
-  {book_id: 100, user_id: 71},
-  {book_id: 101, user_id: 73},
-  {book_id: 102, user_id: 74},
-  {book_id: 103, user_id: 75},
-  {book_id: 104, user_id: 76},
-  {book_id: 105, user_id: 77},
-  {book_id: 106, user_id: 78},
-  {book_id: 107, user_id: 79},
-  {book_id: 108, user_id: 80},
-  {book_id: 109, user_id: 81},
-  {book_id: 110, user_id: 82}
-])
-Book.create!([
-  {title: "Nudge: Improving Decisions About Health, Wealth, and Happiness", publish_date: "2008-04-08", genre: "Philosophy", image_url: "http://d202m5krfqbpi5.cloudfront.net/books/1328828013l/2527900.jpg", summary: "Every day, we make decisions on topics ranging from personal investments to schools for our children to the meals we eat to the causes we champion. Unfortunately, we often choose poorly. The reason, the authors explain, is that, being human, we all are susceptible to various biases that can lead us to blunder. Our mistakes make us poorer and less healthy; we often make bad decisions involving education, personal finance, health care, mortgages and credit cards, the family, and even the planet itself.Thaler and Sunstein invite us to enter an alternative world, one that takes our humanness as a given. They show that by knowing how people think, we can design choice environments that make it easier for people to choose what is best for themselves, their families, and their society. Using colorful examples from the most important aspects of life, Thaler and Sunstein demonstrate how thoughtful �choice architecture” can be established to nudge us in beneficial directions without restricting freedom of choice. Nudge offers a unique new take—from neither the left nor the right—on many hot-button issues, for individuals and governments alike. This is one of the most engaging and provocative books to come along in many years."},
-  {title: "Rot and Ruin", publish_date: "2010-09-14", genre: "Horror", image_url: "http://d202m5krfqbpi5.cloudfront.net/books/1264898635l/7157310.jpg", summary: "In the zombie-infested, post-apocalyptic America where Benny Imura lives, every teenager must find a job by the time they turn fifteen or get their rations cut in half. Benny doesn't want to apprentice as a zombie hunter with his boring older brother Tom, but he has no choice. He expects a tedious job whacking zoms for cash, but what he gets is a vocation that will teach him what it means to be human."},
-  {title: "Hyperbole and a Half: Unfortunate Situations, Flawed Coping Mechanisms, Mayhem, and Other Things That Happened", publish_date: "2013-10-29", genre: "Humor", image_url: "http://d202m5krfqbpi5.cloudfront.net/books/1376509449l/17571007.jpg", summary: "Every time Allie Brosh posts something new on her hugely popular blog Hyperbole and a Half the internet rejoices.Touching, absurd, and darkly comic, Allie Brosh's highly anticipated book Hyperbole and a Half showcases her unique voice, leaping wit, and her ability to capture complex emotions with deceptively simple illustrations.This full-color, beautifully illustrated edition features more than fifty percent new content, with ten never-before-seen essays and one wholly revised and expanded piece as well as classics from the website like 'The God of Cake' 'Dogs Don't Understand Basic Concepts Like Moving' and her astonishing 'Adventures in Depression' and 'Depression Part Two' which have been hailed as some of the most insightful meditations on the disease ever written.The debut of Brosh marks the launch of a major new American humorist who will surely make even the biggest scrooge or snob laugh. We dare you not to."},
-  {title: "The Outsiders", publish_date: "1997-11-01", genre: "Young Adult Fiction", image_url: "http://d202m5krfqbpi5.cloudfront.net/books/1314327508l/231804.jpg", summary: "According to Ponyboy, there are two kinds of people in the world: greasers and socs. A soc (short for 'social') has money, can get away with just about anything, and has an attitude longer than a limousine. A greaser, on the other hand, always lives on the outside and needs to watch his back. Ponyboy is a greaser, and he's always been proud of it, even willing to rumble against a gang of socs for the sake of his fellow greasers--until one terrible night when his friend Johnny kills a soc. The murder gets under Ponyboy's skin, causing his bifurcated world to crumble and teaching him that pain feels the same whether a soc or a greaser."},
-  {title: "The Fellowship of the Ring", publish_date: "2003-09-05", genre: "Fantasy", image_url: "http://d202m5krfqbpi5.cloudfront.net/books/1298411339l/34.jpg", summary: "Frodo Baggins knew the Ringwraiths were searching for him - and the Ring of Power he bore that would enable Sauron to destroy all that was good in Middle-earth. Now it was up to Frodo and his faithful servant Sam to carry the Ring to where it could be detroyed - in the very center of Sauron's dark kingdom."},
-  {title: "The Godfather", publish_date: "2002-03-01", genre: "Crime", image_url: "http://d202m5krfqbpi5.cloudfront.net/books/1195309998l/22034.jpg", summary: "More than thirty years ago, a classic was born. A searing novel of the Mafia underworld, The Godfather introduced readers to the first family of American crime fiction, the Corleones, and the powerful legacy of tradition, blood, and honor that was passed on from father to son. With its themes of the seduction of power, the pitfalls of greed, and family allegiance, it resonated with millions of readers across the world—and became the definitive novel of the virile, violent subculture that remains steeped in intrigue, in controversy, and in our collective consciousness."},
-  {title: "Harry Potter and the Deathly Hallows", publish_date: "2007-08-01", genre: "Fantasy", image_url: "http://d202m5krfqbpi5.cloudfront.net/books/1370023538l/136251.jpg", summary: "'His hand closed automatically around the fake Horcrux, but in spite of everything, in spite of the dark and twisting path he saw stretching ahead for himself, in spite of the final meeting with Voldemort he knew must come, whether in a month, in a year, or in ten, he felt his heart lift at the thought that there was still one last golden day of peace left to enjoy with Ron and Hermione.' With these words 'Harry Potter and the Half-Blood Prince' draws to a close. And here, in this seventh and final book, Harry discovers what fate truly has in store for him as he inexorably makes his way to that final meeting with Voldemort. In this thrilling climax to the phenomenally bestselling series, J.K. Rowling will reveal all to her eagerly waiting readers"},
-  {title: "Star Trek", publish_date: "2009-05-12", genre: "Science Fiction", image_url: "http://d202m5krfqbpi5.cloudfront.net/books/1348936238l/6344943.jpg", summary: "The origins of James Kirk, Spock and the crew of the USS Enterprise from the 2009 film 'Star Trek' and how these iconic characters came together in the alternate reality caused by Nero's time travel. This book is the novelization of the 2009 film of the same name."},
-  {title: "Star Wars: A Long Time Ago..., Book 2: Dark Encounters", publish_date: "2002-08-05", genre: "Science Fiction", image_url: "http://d202m5krfqbpi5.cloudfront.net/books/1348753583l/78722.jpg", summary: "A long time ago, in a decade that was far, far out there, moviedom's most beloved characters made the transition from silver screen to printed page in a comic-book series that was truly out of this world. Each new issue of Marvel's Star Wars comic-book series that launched in 1977 was stranger and crazier than the next. Where else could you find the friendship between Luke Skywalker and C-3PO turning the heart of Valance, a ruthless, cyborg bounty hunter? Or a team of vengeful imperial brothers, led by Baron Orman Tagge, who seek to bring the frozen fury of their Omega Frost to Tatooine and the Rebel Alliance fleet? Or an early version of Jabba the Hutt as a humanoid seal instead of a drooling space slug? Now, for the first time ever, the entire Marvel Star Wars comic-book series is collected in book format, bringing these hard-to-find gems from dusty collectors' boxes to your home library. Whether you're a tried-and-true Star Wars fan, a lover of pop culture, or a collector of kitsch, each stand-alone book in this seven-volume collection will amaze, amuse, and delight."},
-  {title: "Memoirs of a Geisha", publish_date: "2005-11-15", genre: "Historical Fiction", image_url: "http://d202m5krfqbpi5.cloudfront.net/books/1388367666l/930.jpg", summary: "In this literary tour de force, novelist Arthur Golden enters a remote and shimmeringly exotic world. For the protagonist of this peerlessly observant first novel is Sayuri, one of Japan's most celebrated geisha, a woman who is both performer and courtesan, slave and goddess.We follow Sayuri from her childhood in an impoverished fishing village, where in 1929, she is sold to a representative of a geisha house, who is drawn by the child's unusual blue-grey eyes. From there she is taken to Gion, the pleasure district of Kyoto. She is nine years old. In the years that follow, as she works to pay back the price of her purchase, Sayuri will be schooled in music and dance, learn to apply the geisha's elaborate makeup, wear elaborate kimono, and care for a coiffure so fragile that it requires a special pillow. She will also acquire a magnanimous tutor and a venomous rival. Surviving the intrigues of her trade and the upheavals of war, the resourceful Sayuri is a romantic heroine on the order of Jane Eyre and Scarlett O'Hara. And Memoirs of a Geisha is a triumphant work - suspenseful, and utterly persuasive."}
-])
-Chapter.create!([
-  {title: "The Hobbit", book_id: 95, description: "Lives of Hobbits", content_url: "", number: 1}
-])
-Review.create!([
-  {description: "A review of Lord of the Rings: Fellowship of the Ring, by Sauron  Hello. You may remember me as the title character of the Lord of Rings. I go by a lot of names: Dark Lord of Mordor, Sorcerer, Red Eye, Dark Power, Lord of Barad-dûr, Ring-maker and Base Master of Treachery (I use that one in my band). I actually object to Tolkien's chosen name of Sauron, which I understand originates from an adjective that means \"foul, putrid\" in his crappy invented language. What can I say, the showers in Mordor are sketchy at best. On weekends, my poker buddies call me Sauron the Destroyer of Nacho Platters. ", publish_date: nil, user_id: 72, book_id: 95, rating: 5},
-  {description: "Most seventeen-year olds don’t view the possibility of an early death as being, well, possible. But then again, most seventeen-year olds haven’t come face-to-face with death almost half a dozen times before their first kiss either.  In Harry Potter and the Deathly Hallows, the seventh and final installment of the ridiculously popular Harry Potter series, J.K. Rowling brilliantly ties up every loose end that she has planted over the last ten years since the very first outing of the series was published in 1997. Truly, Rowling has learned exactly what her fans want and subsequently delivers a book that answers every Potterhead’s questions — and then some. ", publish_date: nil, user_id: 83, book_id: 107, rating: 5},
-  {description: "Authors who inspire a movement are usually misunderstood, especially by those they have inspired, and Tolkien is no exception, but one of the biggest misconceptions about Tolkien is the idea that he is somehow an 'innovator of fantasy'. He did add a number of techniques to the repertoire of epic fantasy writers, and these have been dutifully followed by his many imitators, but for the most part, these techniques are little more than bad habits.  Many have called Tolkien by such epithets as 'The Father of Fantasy', but anyone who makes this claim simply does not know of the depth and history of the fantasy genre. For those who are familiar with the great and influential fantastical authors, from Ovid and Ariosto to Eddison and Dunsany to R.E. Howard and Fritz Leiber, it is clear that, long before Tolkien, fantasy was already a complex, well-established, and even a respected literary genre.", publish_date: nil, user_id: 83, book_id: 105, rating: 3}
-])
-User.create!([
-  {name: "Richard H. Thaler", email: "rthaler@nudge.com", username: "rthaler", image_url: "", password_digest: "$2a$10$GrVINtzeCdnnRhObZ0cBieJtsdRU6pLQ4E0Jjs4p6bBr85qsRJcWK"},
-  {name: "Jonathan Maberry", email: "jmaberry@rot.com", username: "jmaberry", image_url: "", password_digest: "$2a$10$4W7ECoMUtD7/tsOWJ5VrmuWwk4OkYSJLi/ofs7l2Z1z8XBExqlE2."},
-  {name: "Allie Brosh", email: "abrosh@hyper.com", username: "abrosh", image_url: "", password_digest: "$2a$10$J6BSEe5Xrm/dSRNDDvSma.wPO6vJNXzVKXBdYYQ18BMZi9Udr50fa"},
-  {name: "S.E.Hinton", email: "shinton@outsiders.com", username: "shinton", image_url: "", password_digest: "$2a$10$rYVaT/B6mOTvOMknPAr6C.PCLxpHD45wE3L3mRHeUxbdA2igztT56"},
-  {name: "J.R.R.Tolkien", email: "jrrtolkien@lotr.com", username: "jrrtolkien", image_url: "", password_digest: "$2a$10$KA1yz7IK/yJJZTFfacM2Ueor856.FJfVY.Wi8CmXuUS3Sx.s7HdJO"},
-  {name: "Mario Puzo", email: "mpuzo@godfather.com", username: "mpuzo", image_url: "", password_digest: "$2a$10$ptPIaDjYplZ0A46GulOyJewMqA8G1zFiHSRa0mnDg9JQ6YPhgjiUG"},
-  {name: "J.K.Rowling", email: "jkrowling@harry.com", username: "jkrowling", image_url: "", password_digest: "$2a$10$IIY2LYOrG/cD6O3xziesV.hsWW/r5rCJcE5PtDy5sRJno8XJBw8Ky"},
-  {name: "Alan Dean Foster", email: "adean@trek.com", username: "adean", image_url: "", password_digest: "$2a$10$O6c8v2qhwE8iAr7ZC2LwH.CT52r9iK26RAVYxFfAZbpD7CAeRqNpW"},
-  {name: "Terry Austin", email: "taustin@wars.com", username: "taustin", image_url: "", password_digest: "$2a$10$5IUBdT3/N7XCE8y9xAV5H.eZY./bmUQFeos0kpxqqJk8hluk9GCCC"},
-  {name: "Arthur Golden", email: "agolden@geisha.com", username: "agolden", image_url: "", password_digest: "$2a$10$YYOY1CJfNM6t5sNjReFNv.CUY7aNguDqphjFmg0EgeYWAc05xF56G"},
-  {name: "Rupa Sravani Kommineni", email: "rkommineni@uchicago.edu", username: "rkommineni", image_url: "", password_digest: "$2a$10$OdkYXRm6WnA4GANXDYV62OVo46M4cW/ZnRZKxwR5fnPrD3Synql5q"}
-])
+#encoding: utf-8
+books = [{:title => "Nudge: Improving Decisions About Health, Wealth, and Happiness", :publish_date => "April 8th 2008", :genre => "Philosophy", :image_url => "http://d202m5krfqbpi5.cloudfront.net/books/1328828013l/2527900.jpg", :summary => "Every day, we make decisions on topics ranging from personal investments to schools for our children to the meals we eat to the causes we champion. Unfortunately, we often choose poorly. The reason, the authors explain, is that, being human, we all are susceptible to various biases that can lead us to blunder. Our mistakes make us poorer and less healthy; we often make bad decisions involving education, personal finance, health care, mortgages and credit cards, the family, and even the planet itself.Thaler and Sunstein invite us to enter an alternative world, one that takes our humanness as a given. They show that by knowing how people think, we can design choice environments that make it easier for people to choose what is best for themselves, their families, and their society. Using colorful examples from the most important aspects of life, Thaler and Sunstein demonstrate how thoughtful �choice architecture” can be established to nudge us in beneficial directions without restricting freedom of choice. Nudge offers a unique new take—from neither the left nor the right—on many hot-button issues, for individuals and governments alike. This is one of the most engaging and provocative books to come along in many years."},
+              {:title => "Rot and Ruin", :publish_date => "September 14th 2010", :genre => "Horror", :image_url => "http://d202m5krfqbpi5.cloudfront.net/books/1264898635l/7157310.jpg", :summary => "In the zombie-infested, post-apocalyptic America where Benny Imura lives, every teenager must find a job by the time they turn fifteen or get their rations cut in half. Benny doesn't want to apprentice as a zombie hunter with his boring older brother Tom, but he has no choice. He expects a tedious job whacking zoms for cash, but what he gets is a vocation that will teach him what it means to be human."},
+              {:title => "Hyperbole and a Half: Unfortunate Situations, Flawed Coping Mechanisms, Mayhem, and Other Things That Happened", :publish_date => "October 29th 2013", :genre => "Humor", :image_url => "http://d202m5krfqbpi5.cloudfront.net/books/1376509449l/17571007.jpg", :summary => "Every time Allie Brosh posts something new on her hugely popular blog Hyperbole and a Half the internet rejoices.Touching, absurd, and darkly comic, Allie Brosh's highly anticipated book Hyperbole and a Half showcases her unique voice, leaping wit, and her ability to capture complex emotions with deceptively simple illustrations.This full-color, beautifully illustrated edition features more than fifty percent new content, with ten never-before-seen essays and one wholly revised and expanded piece as well as classics from the website like 'The God of Cake' 'Dogs Don't Understand Basic Concepts Like Moving' and her astonishing 'Adventures in Depression' and 'Depression Part Two' which have been hailed as some of the most insightful meditations on the disease ever written.The debut of Brosh marks the launch of a major new American humorist who will surely make even the biggest scrooge or snob laugh. We dare you not to."},
+              {:title => "The Outsiders", :publish_date => "November 1st 1997", :genre => "Young Adult Fiction", :image_url => "http://d202m5krfqbpi5.cloudfront.net/books/1314327508l/231804.jpg", :summary => "According to Ponyboy, there are two kinds of people in the world: greasers and socs. A soc (short for 'social') has money, can get away with just about anything, and has an attitude longer than a limousine. A greaser, on the other hand, always lives on the outside and needs to watch his back. Ponyboy is a greaser, and he's always been proud of it, even willing to rumble against a gang of socs for the sake of his fellow greasers--until one terrible night when his friend Johnny kills a soc. The murder gets under Ponyboy's skin, causing his bifurcated world to crumble and teaching him that pain feels the same whether a soc or a greaser."},
+              {:title => "The Fellowship of the Ring", :publish_date => "September 5th 2003", :genre => "Fantasy", :image_url => "http://d202m5krfqbpi5.cloudfront.net/books/1298411339l/34.jpg", :summary => "Frodo Baggins knew the Ringwraiths were searching for him - and the Ring of Power he bore that would enable Sauron to destroy all that was good in Middle-earth. Now it was up to Frodo and his faithful servant Sam to carry the Ring to where it could be detroyed - in the very center of Sauron's dark kingdom."},
+              {:title => "The Godfather", :publish_date => "March 1st 2002", :genre => "Crime", :image_url => "http://d202m5krfqbpi5.cloudfront.net/books/1195309998l/22034.jpg", :summary => "More than thirty years ago, a classic was born. A searing novel of the Mafia underworld, The Godfather introduced readers to the first family of American crime fiction, the Corleones, and the powerful legacy of tradition, blood, and honor that was passed on from father to son. With its themes of the seduction of power, the pitfalls of greed, and family allegiance, it resonated with millions of readers across the world—and became the definitive novel of the virile, violent subculture that remains steeped in intrigue, in controversy, and in our collective consciousness."},
+              {:title => "Harry Potter and the Deathly Hallows", :publish_date => "August 1st 2007", :genre => "Fantasy", :image_url => "http://d202m5krfqbpi5.cloudfront.net/books/1370023538l/136251.jpg", :summary => "'His hand closed automatically around the fake Horcrux, but in spite of everything, in spite of the dark and twisting path he saw stretching ahead for himself, in spite of the final meeting with Voldemort he knew must come, whether in a month, in a year, or in ten, he felt his heart lift at the thought that there was still one last golden day of peace left to enjoy with Ron and Hermione.' With these words 'Harry Potter and the Half-Blood Prince' draws to a close. And here, in this seventh and final book, Harry discovers what fate truly has in store for him as he inexorably makes his way to that final meeting with Voldemort. In this thrilling climax to the phenomenally bestselling series, J.K. Rowling will reveal all to her eagerly waiting readers"},
+              {:title => "Star Trek", :publish_date => "May 12th 2009", :genre => "Science Fiction", :image_url => "http://d202m5krfqbpi5.cloudfront.net/books/1348936238l/6344943.jpg", :summary => "The origins of James Kirk, Spock and the crew of the USS Enterprise from the 2009 film 'Star Trek' and how these iconic characters came together in the alternate reality caused by Nero's time travel. This book is the novelization of the 2009 film of the same name."},
+              {:title => "Star Wars: A Long Time Ago..., Book 2: Dark Encounters", :publish_date => "August 5th 2002", :genre => "Science Fiction", :image_url => "http://d202m5krfqbpi5.cloudfront.net/books/1348753583l/78722.jpg", :summary => "A long time ago, in a decade that was far, far out there, moviedom's most beloved characters made the transition from silver screen to printed page in a comic-book series that was truly out of this world. Each new issue of Marvel's Star Wars comic-book series that launched in 1977 was stranger and crazier than the next. Where else could you find the friendship between Luke Skywalker and C-3PO turning the heart of Valance, a ruthless, cyborg bounty hunter? Or a team of vengeful imperial brothers, led by Baron Orman Tagge, who seek to bring the frozen fury of their Omega Frost to Tatooine and the Rebel Alliance fleet? Or an early version of Jabba the Hutt as a humanoid seal instead of a drooling space slug? Now, for the first time ever, the entire Marvel Star Wars comic-book series is collected in book format, bringing these hard-to-find gems from dusty collectors' boxes to your home library. Whether you're a tried-and-true Star Wars fan, a lover of pop culture, or a collector of kitsch, each stand-alone book in this seven-volume collection will amaze, amuse, and delight."},
+              {:title => "Memoirs of a Geisha", :publish_date => "November 15th 2005", :genre => "Historical Fiction", :image_url => "http://d202m5krfqbpi5.cloudfront.net/books/1388367666l/930.jpg", :summary => "In this literary tour de force, novelist Arthur Golden enters a remote and shimmeringly exotic world. For the protagonist of this peerlessly observant first novel is Sayuri, one of Japan's most celebrated geisha, a woman who is both performer and courtesan, slave and goddess.We follow Sayuri from her childhood in an impoverished fishing village, where in 1929, she is sold to a representative of a geisha house, who is drawn by the child's unusual blue-grey eyes. From there she is taken to Gion, the pleasure district of Kyoto. She is nine years old. In the years that follow, as she works to pay back the price of her purchase, Sayuri will be schooled in music and dance, learn to apply the geisha's elaborate makeup, wear elaborate kimono, and care for a coiffure so fragile that it requires a special pillow. She will also acquire a magnanimous tutor and a venomous rival. Surviving the intrigues of her trade and the upheavals of war, the resourceful Sayuri is a romantic heroine on the order of Jane Eyre and Scarlett O'Hara. And Memoirs of a Geisha is a triumphant work - suspenseful, and utterly persuasive."}]
+
+Book.destroy_all
+
+books.each do |book|
+  b = Book.new
+  b.title = book[:title]
+  b.publish_date = book[:publish_date]
+  b.genre = book[:genre]
+  b.image_url = book[:image_url]
+  b.summary = book[:summary]
+  b.save
+end
+
+#populate users table/model
+#look into what are industry standards for password
+users = [{:name => "Richard H. Thaler", :email => "rthaler@nudge.com", :username => "rthaler", :image_url => "", :password => "nudge", :password_confirmation => "nudge"},
+              {:name => "Jonathan Maberry", :email => "jmaberry@rot.com", :username => "jmaberry", :image_url => "", :password => "rot", :password_confirmation => "rot"},
+              {:name => "Allie Brosh", :email => "abrosh@hyper.com", :username => "abrosh", :image_url => "", :password => "hyper", :password_confirmation => "hyper"},
+              {:name => "S.E.Hinton", :email => "shinton@outsiders.com", :username => "shinton", :image_url => "", :password => "outsiders", :password_confirmation => "outsiders"},
+              {:name => "J.R.R.Tolkien", :email => "jrrtolkien@lotr.com", :username => "jrrtolkien", :image_url => "", :password => "lotr", :password_confirmation => "lotr"},
+              {:name => "Mario Puzo", :email => "mpuzo@godfather.com", :username => "mpuzo", :image_url => "", :password => "godfather", :password_confirmation => "godfather"},
+              {:name => "J.K.Rowling", :email => "jkrowling@harry.com", :username => "jkrowling", :image_url => "", :password => "harry", :password_confirmation => "harry"},
+              {:name => "Alan Dean Foster", :email => "adean@trek.com", :username => "adean", :image_url => "", :password => "trek", :password_confirmation => "trek"},
+              {:name => "Terry Austin", :email => "taustin@wars.com", :username => "taustin", :image_url => "", :password => "wars", :password_confirmation => "wars"},
+            {:name => "Arthur Golden", :email => "agolden@geisha.com", :username => "agolden", :image_url => "", :password => "geisha", :password_confirmation => "geisha"}]
+
+User.destroy_all
+
+users.each do |user|
+  u = User.new
+  u.name = user[:name]
+  u.email = user[:email]
+  u.username = user[:username]
+  u.image_url = user[:image_url]
+  u.password = user[:password]
+  u.password_confirmation = user[:password_confirmation]
+  u.save
+end
+
+#populate authors table/model
+bFirst = Book.first.id
+uFirst = User.first.id
+
+(0..9).each do |id|
+  a = Author.new
+  a.book_id = id + bFirst
+  a.user_id = id + uFirst
+  a.save
+end
+
+#populate chapters for the books
+
+#populate some comments and reviews
