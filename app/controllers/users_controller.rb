@@ -25,7 +25,8 @@ class UsersController < ApplicationController
   end
 
   def books
-    @show_user = User.find_by(:id => params[:user_id])
+    show_user = User.find_by(:id => params[:user_id])
+    @books = show_user.books
   end
 
   #Creae a new user profile
@@ -88,7 +89,6 @@ class UsersController < ApplicationController
 
     redirect_to root_url, notice: "User account deleted successfully!"
   end
-
 
 end
 

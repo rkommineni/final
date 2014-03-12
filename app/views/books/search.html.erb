@@ -1,0 +1,9 @@
+<div class = "row">
+<% if @search_results != nil %>
+	<% @search_results.each do |b| %>
+  		<p><a href = "/books/<%= b.id %>"> <%= b.title %> </a></p>
+	<% end %>
+<% else %>
+	<p> no results found </p>
+<% end %>
+</div>

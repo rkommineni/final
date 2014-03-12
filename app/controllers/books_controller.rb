@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
-  before_action :require_login, :except => [:index, :show, :books]
-  before_action :identify_user, :except => [:index, :show, :books]
+  before_action :require_login, :except => [:index, :show, :books, :search]
+  before_action :identify_user, :except => [:index, :show, :books, :search]
 
   #before every action check if any user is logged in
   def require_login
@@ -24,7 +24,7 @@ class BooksController < ApplicationController
 
 		#for showing most commented books
 		#double check the result
-		b = Hash.new
+    b = Hash.new
 		@books.each do |book|
 			b[book] = book.comments.count
 		end
@@ -127,5 +127,15 @@ class BooksController < ApplicationController
 
       redirect_to root_url, notice: "Book deleted successfully!"
 	end
+
+  def search
+    @search_results = nil
+    if params[:term] != nil
+      @search_results = Book.search(params[:term]).order("created_at desc")
+      if @search_results.blank?
+        @search_results = nil
+      end
+    end
+  end
 
 end
