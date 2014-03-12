@@ -23,57 +23,87 @@
 
 <!-- also need to cut the title if the characters is too long -->
 <br>
-<div>
-<h2> Today's Top 4 Genres </h2>
-</div>
 <div class = "row">
+  <h2> Books </h2>
+  <div class = "row">
+    <h4> Newly Published Books </h4>
+    <% counter = 0 %>
+    <% @new_books.each do |book| %>
+        <% if counter < 4 %>
+            <% counter = counter + 1 %>
+
+            <div class='col-lg-3 test'>
+              <a href = "/books/<%= book.id %>">
+                <% if book.image_url != nil && book.image_url != "" %>
+                  <%= image_tag book.image_url, :class => "image-responsive" %>
+                <% else %>
+                  <p class = "image-responsive unavailable"><%= book.title %></p>
+                <% end %>
+            </a>
+          </div>
+        <% end %>
+      <% end %>
+  </div>
+
+  <div class = "row">
+    <h4> Top Rating Books </h4>
+    <% @rating_counts[0..3].each do |book, c| %>
+      <div class='col-lg-3 test'>
+              <a href = "/books/<%= book.id %>">
+                <% if book.image_url != nil && book.image_url != "" %>
+                  <%= image_tag book.image_url, :class => "image-responsive" %>
+                <% else %>
+                  <p class = "image-responsive unavailable"><%= book.title %></p>
+                <% end %>
+            </a>
+          </div>
+    <% end %>
+  </div>
+
+  <div class = "row">
+    <h4> Most Commented Books </h4>
+    <% @comment_counts.each do |book, c| %>
+      <div class='col-lg-3 test'>
+              <a href = "/books/<%= book.id %>">
+                <% if book.image_url != nil && book.image_url != "" %>
+                  <%= image_tag book.image_url, :class => "image-responsive" %>
+                <% else %>
+                  <p class = "image-responsive unavailable"><%= book.title %></p>
+                <% end %>
+            </a>
+          </div>
+    <% end %>
+  </div>
+
+</div>
+
+
+<div class = "row">
+  <h2>Today's Top 4 Genres </h2>
   <% @top_genre.each do |g, c| %>
     <div class = "col-md-3" >
-    <h4> <%= g %> </h4>
-    <% counter = 0 %>
-    <% @rating_counts.each do |book, c| %>
-      <% if book.genre == g && counter < 4 %>
-        <p><a href = "/books/<%= book.id %>"> <%= book.title %> </a></p>
-        <% counter = counter + 1 %>
+      <h4> <%= g %> </h4>
+      <% counter = 0 %>
+      <% @rating_counts.each do |book, c| %>
+        <% if book.genre == g && counter < 4 %>
+            <% counter = counter + 1 %>
+
+            <p>
+              <a href = "/books/<%= book.id %>">
+                  <%= book.title %>
+            </a></p>
+        <% end %>
       <% end %>
-    <% end %> </div>
+    </div>
   <% end %>
 </div>
 
-
-
-
-<div>
-<h2> Author, Book and Comments </h2>
+<div class="row">
+  <h2>Authors</h2>
+    <div class = "col-md-3">
+      <h4> Productive Authors </h4>
+        <% @authors.each do |a, c| %>
+          <p><a href = "/users/<%= a.id %>"> <%= a.name %> </a></p>
+        <% end %>
+    </div>
 </div>
-<div class = "row">
-  <div class = "col-md-3">
-    <h4> Newly Published Books </h4>
-    <% @new_books.each do |book| %>
-      <p><a href = "/books/<%= book.id %>"> <%= book.title %> </a></p>
-    <% end %>
-  </div>
-
-  <div class = "col-md-3">
-    <h4> Productive Authors </h4>
-    <% @authors.each do |a, c| %>    
-      <p><a href = "/users/<%= a.id %>"> <%= a.name %> </a></p>
-    <% end %>
-  </div>
-
-  <div class = "col-md-3">
-    <h4> Top Rating Books </h4>
-    <% @rating_counts[0..3].each do |b, c| %>
-      <p><a href = "/books/<%= b.id %>"> <%= b.title %> </a></p>
-    <% end %>
-  </div>
-
-  <div class = "col-md-3">
-    <h4> Most Commented Books </h4>
-    <% @comment_counts.each do |b, c| %>
-      <p><a href = "/books/<%= b.id %>"> <%= b.title %> </a></p>
-    <% end %>
-  </div>
-</div>
-
-

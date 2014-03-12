@@ -7,19 +7,19 @@
   <%= form_tag "/users" do%>
   <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-    <input class="form-control" type="text" placeholder="Full Name" name="name">
+    <input class="form-control" type="text" placeholder="Full Name" name="name" required>
   </div>
   <br>
 
   <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-    <input class="form-control" type="text" placeholder="Email address" name="email">
+    <input class="form-control" type="text" placeholder="Email address" name="email" required>
   </div>
   <br>
 
   <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></i></span>
-    <input class="form-control" type="text" placeholder="User name" name="username">
+    <input class="form-control" type="text" placeholder="User name" name="username" required>
   </div>
   <br>
 
@@ -29,18 +29,22 @@
   </div>
   <br>
 
-  <div class="input-group">
+  <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-    <input class="form-control" type="password" placeholder="Password" name="password">
+    <input class="form-control" type="password" placeholder="Password" name="password" required>
   </div>
   <br>
 
   <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-    <input class="form-control" type="password" placeholder="Confirm Password" name="password_confirmation">
+    <input class="form-control" type="password" placeholder="Confirm Password" name="password_confirmation" required>
   </div>
   <br>
   <%= submit_tag "Register" %>
 
 <% end %>
 </div>
+
+<script>
+  $("form").validate();
+</script>

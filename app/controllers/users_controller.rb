@@ -32,7 +32,10 @@ class UsersController < ApplicationController
   def create
     #Check if email is registered already
     #decide if one email can take more than one username
-    if User.find_by(email: params[:email])
+    #check for industry strength passwords and equal confirm passwords
+    if params[:password] != params[:password_confirmation]
+      redirect_to new_user_url, notice: "Password confirmation does not match that of the password."
+    elsif User.find_by(email: params[:email])
       redirect_to root_url, notice: "An account is registered with the given email address."
     else
       #check if username exists

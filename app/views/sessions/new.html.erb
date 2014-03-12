@@ -1,5 +1,5 @@
 <div class='container'>
-  <h2>Welcome!</h2>
+  <h2>Welcome, Back!</h2>
 </div>
 
 <div class="row">
@@ -7,13 +7,13 @@
 
   <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></i></span>
-    <input class="form-control" type="text" placeholder="User name" name="username">
+    <input class="form-control" type="text" placeholder="User name" name="username" required>
   </div>
   <br>
 
   <div class="input-group">
     <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-    <input class="form-control" type="password" placeholder="Password" name="password">
+    <input class="form-control" type="password" placeholder="Password" name="password" required>
   </div>
   <br>
 
@@ -21,3 +21,7 @@
 
 <% end %>
 </div>
+
+<script>
+  $("form").validate();
+</script>
