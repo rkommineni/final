@@ -1,11 +1,11 @@
-<h2> Your Bookshelf </h2>
+<h2> Your BookShelf </h2>
 
 <div class = "row">
-<% if @books == nil %>
-	<p>You don't have a bookshelf yet</p>
+<% if @bookshelfs == [] %>
+  <p>No Books on your bokshelf</p>
 <% else %>
-  <% @books.each do |b| %>
-  	<p><a href = "/books/<%= book.id %>"> <%= book.title %> </a></p>
+  <% @bookshelfs.each do |bookshelf| %>
+    <p><a href = "/books/<%= bookshelf.book.id %>"> <%= bookshelf.book.title %> </a></p>
   <% end %>
  <% end %>
 </div>

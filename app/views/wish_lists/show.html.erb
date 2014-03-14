@@ -1,11 +1,11 @@
 <h2> Your WishList </h2>
 
 <div class = "row">
-<% if @books == nil %>
+<% if @wishlists == [] %>
 	<p>You don't have a wishlist yet</p>
 <% else %>
-  <% @books.each do |b| %>
-  	<p><a href = "/books/<%= book.id %>"> <%= book.title %> </a></p>
+  <% @wishlists.each do |wishlist| %>
+  	<p><a href = "/books/<%= wishlist.book.id %>"> <%= wishlist.book.title %> </a></p>
   <% end %>
  <% end %>
 </div>

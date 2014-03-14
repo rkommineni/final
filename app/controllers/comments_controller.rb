@@ -55,10 +55,6 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
 
-    if Comment.where("id = #{@comment.id} and user_id = #{@user.id}") == []
-        redirect_to chapter_url(@comment.chapter.id), :notice => "You are not authorized to perform this action"
-    end
-
     @comment.destroy()
 
     redirect_to book_url(params[:book_id]), notice: "Comment deleted successfully!"

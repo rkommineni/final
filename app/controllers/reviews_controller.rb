@@ -66,10 +66,6 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
 
-    if Review.where("id = #{@review.id} and user_id = #{@user.id}") == []
-        redirect_to book_url(@book.id), :notice => "You are not authorized to perform this action"
-    end
-
     @review.destroy()
 
     redirect_to book_url(params[:book_id]), notice: "Review deleted successfully!"

@@ -34,32 +34,23 @@ class UsersController < ApplicationController
     #Check if email is registered already
     #decide if one email can take more than one username
     #check for industry strength passwords and equal confirm passwords
-    if params[:password] != params[:password_confirmation]
-      redirect_to new_user_url, notice: "Password confirmation does not match that of the password."
-    elsif User.find_by(email: params[:email])
-      redirect_to root_url, notice: "An account is registered with the given email address."
-    else
-      #check if username exists
-      if User.find_by(username: params[:username])
-        redirect_to root_url, notice: "Username already exists."
-      else
-        #this can be moved to another method in future(also to be used by update method)
-        user = User.new
-        user.name = params[:name]
-        user.email = params[:email]
-        user.username = params[:username]
-        user.image_url = params[:image_url]
+    #check if username exists
+    #this can be moved to another method in future(also to be used by update method)
+    user = User.new
+    user.name = params[:name]
+    user.email = params[:email]
+    user.username = params[:username]
+    user.image_url = params[:image_url]
 
-        #have to implement bcrypt for secure password i.e., not saving password
-        user.password = params[:password]
-        user.password_confirmation = params[:password_confirmation]
-        user.save
-        #also check if database save was successful without any errors
-        #start the session for the user immediately after sign up
-        session[:user_id] = user.id
-        redirect_to root_url, notice: "Thanks for registering!"
-      end
-    end
+    #have to implement bcrypt for secure password i.e., not saving password
+    user.password = params[:password]
+    user.password_confirmation = params[:password_confirmation]
+    user.save
+
+    #also check if database save was successful without any errors
+    #start the session for the user immediately after sign up
+    session[:user_id] = user.id
+    redirect_to root_url, notice: "Thanks for registering!"
   end
 
   #implement following functionalities only if the right user is logged in, use filters

@@ -2,6 +2,7 @@ class BookShelfsController < ApplicationController
 
     before_action :require_login
     before_action :identify_user
+     before_action :redirect_user, :except => [:show, :create, :destroy]
 
   #before every action identify the user that is logged in
   def identify_user
@@ -18,22 +19,28 @@ class BookShelfsController < ApplicationController
     end
   end
 
+  def redirect_user
+    redirect_to root_url, notice: "You are not authorized to perform this action!"
+  end
 
   def show
-    @book = BookShelf.joins(:book).find_by(:user_id => session[:user_id])
-  end
-
-  def index
-  end
-
-  def new
+  @bookshelfs = BookShelf.joins(:book).where("user_id = #{session[:user_id]}")
   end
 
   def create
-    #also delete the same entry in the wishlist
+    bs = BookShelf.new
+    bs.user_id = session[:user_id]
+    bs.book_id = params[:book_id]
+    bs.save
+
+    redirect_to book_url(params[:book_id]), notice: "Book added to wishlist successfully!"
   end
 
-  def delete
+  def destroy
+    bs = BookShelf.where("user_id = #{session[:user_id]} and book_id = #{params[:book_id]}")
 
+    bs.destroy()
+
+    redirect_to book_url(params[:book_id]), notice: "Book removed from wishlist successfully!"
   end
 end

@@ -119,9 +119,6 @@ class BooksController < ApplicationController
 
 	def destroy
       @book = Book.find(params[:id])
-      if Author.where("book_id = #{@book.id} and user_id = #{@user.id}") == []
-        redirect_to book_url(@book.id), :notice => "You are not authorized to perform this action"
-      end
 
       @book.destroy()
 
