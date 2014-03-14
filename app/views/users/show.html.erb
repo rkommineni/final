@@ -1,11 +1,42 @@
-<!-- Display user details/Profile page -->
+<div class='row'>
+  <div class='col-md-5'>
+    <a href = <%= user_url(@user.id) %>>
+      <% if @user.image_url != nil && @user.image_url != "" %>
+        <%= image_tag @user.image_url, :class => "img-responsive" %>
+      <% else %>
+        <p class = "img-responsive unavailable"><%= @user.name %></p>
+      <% end %>
+    </a>
+  </div>
+  <div class='col-md-7'>
+    <p><strong>Name: </strong><%= @user.name %></p>
+    <p><strong>Username: </strong><%= @user.username %></p>
 
-<ul class="nav nav-pills nav-stacked">
-  <% if !session[:user_id].blank? && (session[:user_id] == @show_user.id) %>
-    <li><a href=<%= edit_user_url %>><i class="fa fa-user fa-fw"></i> Edit Profile</a></li>
-    <li><a href=<%= new_book_url %>><i class="fa fa-book fa-fw"></i> Add a Book</a></li>
-    <li><a href="#"><i class="fa fa-cogs fa-fw"></i> Statistics</a></li>
-  <% end %>
-    <li class="active"><a href=<%= user_url(@show_user) + "/books" %>><i class="fa fa-home fa-fw"></i> Books</a></li>
-</ul>
-<!-- Decide on what should be displayed in profile page -->
+    <% if !session[:user_id].blank? && (session[:user_id] == @user.id) %>
+        <%= link_to 'Edit Profile', edit_user_url(@user.id), class: 'btn btn-info' %>
+        <%= link_to 'Delete Profile', user_url(@user.id), :method => :delete, class: 'btn btn-warning' %>
+        <%= link_to 'Add Book', new_book_url, class: 'btn btn-primary' %>
+        <%= link_to 'Statistics', "", class: 'btn btn-info' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+<h2> Books </h2>
+<% @user.books.in_groups_of(4, false).each_with_index do |group, index| %>
+  <div class="row top-margin">
+    <% group.each do |book| %>
+      <div class='col-lg-3 test'>
+             <a href = "/books/<%= book.id %>">
+              <% if book.image_url != nil && book.image_url != "" %>
+              <%= image_tag book.image_url, :class => "image-responsive" %>
+              <% else %>
+              <p class = "image-responsive unavailable"><%= book.title %></p>
+              <% end %>
+            </a>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+</div>
+

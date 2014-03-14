@@ -2,14 +2,11 @@ Final::Application.routes.draw do
 
   root "books#index"
 
-  get "review/new"
-  get "review/create"
-
   get "/users/:user_id/books" => "users#books"
 
   get "/books/search" => "books#search"
 
-  resources :book_shelfs 
+  resources :book_shelfs
   resources :wish_lists
   resources :books
   resources :chapters

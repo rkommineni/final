@@ -9,11 +9,11 @@ class User < ActiveRecord::Base
   #model validations
   validates :name, presence: true
   validates :email, presence: true
-  validates :email, uniqueness: { :message => "An account with the given email address already exists" }
+  validates :email, uniqueness: { :message => " is associated with another account" }
   validates :username, presence: true
-  validates :username, uniqueness: { :message => "Username is already taken. Please choose another username" }
+  validates :username, uniqueness: { :message => " is already taken. Please choose another username" }
   validates :password, presence: true
-  validates :password, length: { in: 6..15, :message => "Password should contain 6 to 15 characters" }
+  validates :password, length: { in: 6..15, :message => " should contain 6 to 15 characters" }
   validates :password_confirmation, presence: true
   #validate email address based on the syntax
 

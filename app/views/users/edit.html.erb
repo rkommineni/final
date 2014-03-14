@@ -2,6 +2,16 @@
   <h2>Edit Profile</h2>
 </div>
 
+<% if @user.errors.any? %>
+  <div class="alert alert-dismissable alert-danger">
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+  </div>
+<% end %>
+
 <div class='row'>
   <!-- RENDER THE FORM PARTIAL HERE. -->
   <!-- populate user details using form partials -->
@@ -9,12 +19,6 @@
   <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
     <input class="form-control" type="text" value="<%= @user.name%>" placeholder="Full Name" name="name">
-  </div>
-  <br>
-
-  <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-    <input class="form-control" type="text" value="<%= @user.email%>" placeholder="Email address" name="email">
   </div>
   <br>
 
