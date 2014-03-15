@@ -36,15 +36,15 @@
           <%end%>
 
           <% if WishList.where("book_id = #{@book.id} and user_id = #{@user.id}") == [] %>
-            <%= link_to 'Add to WishList', "/wish_lists?book_id=#{@book.id}", :method => :post, class: 'btn btn-primary' %>
+            <%= link_to 'Add to WishList', "/wish_lists?book_id=#{@book.id}", :method => :post, class: 'btn btn-warning' %>
           <% else %>
-            <%= link_to 'Remove from WishList', "/wish_lists/0?book_id=#{@book.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
-          <%end%>
+            <%= link_to 'Remove from WishList', "/wish_lists?book_id=#{@book.id}", :method => :delete, class: 'btn btn-warning' %>
+          <% end %>
 
           <% if BookShelf.where("book_id = #{@book.id} and user_id = #{@user.id}") == [] %>
             <%= link_to 'Add to BookShelf', "/book_shelfs?book_id=#{@book.id}", :method => :post, class: 'btn btn-warning' %>
-          <%else %>
-            <%= link_to 'Remove from BookShelf', "/book_shelfs/0?book_id=#{@book.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+          <% else %>
+              <%= link_to 'Remove from BookShelf', "/book_shelfs?book_id=#{@book.id}", :method => :delete, class: 'btn btn-warning' %>
           <% end %>
 
         <% end%>
