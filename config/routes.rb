@@ -2,9 +2,9 @@ Final::Application.routes.draw do
 
   root "books#index"
 
-  get "/users/:user_id/books" => "users#books"
-
   get "/books/search" => "books#search"
+  get "/books/author/:book_id" => "books#new_author"
+  post "/books/author/:book_id" => "books#add_author"
 
   resources :book_shelfs
   resources :wish_lists

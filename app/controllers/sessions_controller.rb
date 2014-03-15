@@ -19,10 +19,10 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         redirect_to root_url, notice: "Welcome Back, #{user.name}"
       else
-        redirect_to root_url, notice: "Incorrect password!"
+        redirect_to new_session_url, notice: "Incorrect password!"
       end
     else
-       redirect_to root_url, notice: "Username does not exist!"
+       redirect_to new_session_url, notice: "Username does not exist!"
     end
   end
 

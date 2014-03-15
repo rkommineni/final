@@ -1,0 +1,33 @@
+<% if @chapter.errors.any? %>
+  <div class="alert alert-dismissable alert-danger">
+      <ul>
+        <% @chapter.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+  </div>
+<% end %>
+
+ <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>
+    <input class="form-control" type="text" value="<%= @chapter.title %>" placeholder="Title" name="title" required>
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @chapter.description %>" placeholder="Description" name="description" required>
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @chapter.content_url %>" placeholder="Content url" name="content_url">
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @book.title%>" placeholder="Book Title" name="book_name" readonly>
+  </div>
+  <br>

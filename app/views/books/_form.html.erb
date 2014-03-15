@@ -1,0 +1,36 @@
+<% if @book.errors.any? || @author.errors.any? %>
+  <div class="alert alert-dismissable alert-danger">
+      <ul>
+        <% @book.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        <% @author.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+  </div>
+<% end %>
+
+<div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>
+    <input class="form-control" type="text" value="<%= @book.title%>" placeholder="Title" name="title" required>
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @book.genre%>" placeholder="Genre" name="genre" required>
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @book.image_url%>" placeholder="Image url" name="image_url">
+  </div>
+  <br>
+
+  <div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @book.summary%>" placeholder="Summary" name="summary" required>
+  </div>
+  <br>

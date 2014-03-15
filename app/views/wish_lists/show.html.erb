@@ -1,11 +1,23 @@
 <h2> Your WishList </h2>
 
-<div class = "row">
-<% if @wishlists == [] %>
-	<p>You don't have a wishlist yet</p>
-<% else %>
-  <% @wishlists.each do |wishlist| %>
-  	<p><a href = "/books/<%= wishlist.book.id %>"> <%= wishlist.book.title %> </a></p>
+<div class="row">
+  <% if @wishlists == [] %>
+    <p>No Books on your wishlist</p>
+  <% else %>
+    <% @wishlists.in_groups_of(4, false).each_with_index do |group, index| %>
+      <div class="row top-margin">
+        <% group.each do |book| %>
+          <div class='col-lg-3 test'>
+            <a href = "/books/<%= book.id %>">
+              <% if book.image_url != nil && book.image_url != "" %>
+                <%= image_tag book.image_url, :class => "image-responsive" %>
+              <% else %>
+                <p class = "image-responsive unavailable"><%= book.title %></p>
+              <% end %>
+            </a>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
- <% end %>
 </div>

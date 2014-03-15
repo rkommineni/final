@@ -32,16 +32,20 @@ class CommentsController < ApplicationController
 
   def new
     @chapter = Chapter.find(params[:chapter_id])
+    @comment = Comment.new
   end
 
   def create
-    c = Comment.new
-    c.description = params[:description]
-    c.user_id = session[:user_id]
-    c.chapter_id = params[:chapter_id]
-    c.save
+    @comment = Comment.new
+    @comment.description = params[:description]
+    @comment.user_id = session[:user_id]
+    @comment.chapter_id = params[:chapter_id]
 
-    redirect_to chapter_url(params[:chapter_id]), :notice => "Comment added successfully"
+    if @comment.save
+      redirect_to chapter_url(params[:chapter_id]), :notice => "Comment added successfully"
+    else
+      render "new"
+    end
   end
 
   def edit
@@ -53,11 +57,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    comment = Comment.find(params[:id])
+    comment.destroy()
 
-    @comment.destroy()
-
-    redirect_to book_url(params[:book_id]), notice: "Comment deleted successfully!"
+    redirect_to chapter_url(params[:chapter_id]), notice: "Comment deleted successfully!"
   end
 
 end

@@ -1,0 +1,40 @@
+<div>
+  <h1> Add Author</h1>
+</div>
+
+<% if @author.errors.any? %>
+  <div class="alert alert-dismissable alert-danger">
+      <ul>
+        <% @author.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+  </div>
+<% end %>
+
+<%= form_tag "/books/author/#{@book.id}", :method => :post do%>
+
+  <div>
+    <h5> Select author from the list:
+    <select name="user_id" required>
+      <% @users.each do |user| %>
+        <option value="<%= user.id %>"><%= user.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @book.title%>" placeholder="Book Title" name="book_name" readonly>
+  </div>
+  <br>
+
+  <%= submit_tag "Add Author" %>
+
+<% end %>
+
+<script>
+  $("form").validate();
+</script>
+

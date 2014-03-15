@@ -32,17 +32,21 @@ class ReviewsController < ApplicationController
 
   def new
     @book = Book.find(params[:book_id])
+    @review = Review.new
   end
 
   def create
-    r = Review.new
-    r.description = params[:description]
-    r.user_id = session[:user_id]
-    r.book_id = params[:book_id]
-    r.rating = params[:rating]
-    r.save
+    @review = Review.new
+    @review.description = params[:description]
+    @review.user_id = session[:user_id]
+    @review.book_id = params[:book_id]
+    @review.rating = params[:rating]
 
-    redirect_to book_url(params[:book_id]), :notice => "Review added successfully"
+    if @review.save
+      redirect_to book_url(params[:book_id]), :notice => "Review added successfully"
+    else
+      render "new"
+    end
   end
 
   def edit
@@ -53,14 +57,17 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    review = Review.find(params[:id])
-    review.description = params[:description]
-    review.user_id = session[:user_id]
-    review.book_id = params[:book_id]
-    review.rating = params[:rating]
-    review.save
+    @review = Review.find(params[:id])
+    @review.description = params[:description]
+    @review.user_id = session[:user_id]
+    @review.book_id = params[:book_id]
+    @review.rating = params[:rating]
 
-    redirect_to book_url(params[:book_id]), :notice => "Review updated successfully"
+    if @review.save
+      redirect_to book_url(params[:book_id]), :notice => "Review updated successfully"
+    else
+      render "edit"
+    end
   end
 
   def destroy

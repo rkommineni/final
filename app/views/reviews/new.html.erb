@@ -1,49 +1,14 @@
 <div>
   <h1> Add a New Review</h1>
 </div>
+
 <%= form_tag "/reviews?book_id=#{@book.id}" do%>
 <!-- Do form validations -->
-  <div>
-    <h5> Rate the Book: 
-    <input type="radio" name="rating" value="1">1
-    <input type="radio" name="rating" value="2">2
-    <input type="radio" name="rating" value="3">3
-    <input type="radio" name="rating" value="4">4
-    <input type="radio" name="rating" value="5">5
-    </h5>
-  </div>
-
-
-  <!--
-  <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
-    <input class="form-control" type="text" placeholder="Rate It" name="rating">
-  </div>
-  <br>
-  -->
-
-  <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>
-    <input class="form-control" type="text" placeholder="Description" name="description">
-  </div>
-  <br>
-
-
-
-
-  <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-    <input class="form-control" type="text" value="<%= @user.name%>" placeholder="Author" name="author" readonly>
-  </div>
-  <br>
-
-  <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
-    <input class="form-control" type="text" value="<%= @book.title%>" placeholder="Book Title" name="book_name" readonly>
-  </div>
-  <br>
-
+  <%= render "form" %>
   <%= submit_tag "Submit Review" %>
 
 <% end %>
 
+<script>
+  $("form").validate();
+</script>

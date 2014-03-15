@@ -1,39 +1,14 @@
 <div>
 	<h1> Add a New book </h1>
 </div>
+
 <%= form_tag "/books" do%>
 
-  <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>
-    <input class="form-control" type="text" placeholder="Title" name="title">
-  </div>
-  <br>
-
-  <!-- <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-    <input class="form-control" type="text" placeholder="Author" name="author">
-  </div>
-  <br> -->
-
-  <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
-    <input class="form-control" type="text" placeholder="Genre" name="genre">
-  </div>
-  <br>
-
-  <div class="input-group margin-bottom-sm">
-    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
-    <input class="form-control" type="text" placeholder="Image url" name="image_url">
-  </div>
-  <br>
-
-  <div class="input-group">
-    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
-    <input class="form-control" type="text" placeholder="Summary" name="summary">
-  </div>
-  <br>
-
+  <%= render "form" %>
   <%= submit_tag "Add Book" %>
 
 <% end %>
 
+<script>
+  $("form").validate();
+</script>

@@ -14,38 +14,38 @@
     <h4><%= @book.summary %></h4>
     <p><strong>Genre: </strong><%= @book.genre %></p>
     <p><strong>Published Date: </strong><%= @book.publish_date %></p>
-    <p><strong>Author: </strong>
+    <p><strong>Authors: </strong>
       <% @book.users.each do |author| %>
-        <%= author.name %>
+        <a href="<%= user_url(author.id) %>" class="navbar-link"><%= author.name %></a>
       <% end %>
     </p>
 
-    <%= link_to 'Chapters', chapters_url + "?book_id=#{@book.id}", class: 'btn btn-warning' %>
-    <% if @user != '' %>
+    <%= link_to 'Chapters', chapters_url + "?book_id=#{@book.id}", class: 'btn btn-info' %>
+    <% if !session[:user_id].nil? %>
       <% if Author.where("book_id = #{@book.id} and user_id = #{@user.id}") != [] %>
-        <%= link_to 'Add Chapter', new_chapter_url + "?book_id=#{@book.id}", class: 'btn btn-warning' %>
-        <%= link_to 'Add Author', "/books/author/#{@book.id}", class: 'btn btn-warning' %>
+        <%= link_to 'Add Chapter', new_chapter_url + "?book_id=#{@book.id}", class: 'btn btn-primary' %>
+        <%= link_to 'Add Author', "/books/author/#{@book.id}", class: 'btn btn-primary' %>
 
          <!-- how to link to delete link
         only the author/creator can delete/edit the book details. also chapters can be added-->
-        <%= link_to 'Edit Book', edit_book_url("#{@book.id}"), class: 'btn btn-warning' %>
+        <%= link_to 'Edit Book', edit_book_url(@book.id), class: 'btn btn-info' %>
         <%= link_to 'Delete Book', "/books/#{@book.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
         <% else %>
           <% if Review.where("book_id = #{@book.id} and user_id = #{@user.id}") == [] %>
-            <%= link_to 'Submit Review', new_review_url + "?book_id=#{@book.id}", class: 'btn btn-warning' %>
+            <%= link_to 'Submit Review', new_review_url + "?book_id=#{@book.id}", class: 'btn btn-primary' %>
           <%end%>
-          <% if WishList.where("book_id = #{@book.id} and user_id = #{@user.id}") == [] %>
 
-            <% if BookShelf.where("book_id = #{@book.id} and user_id = #{@user.id}") == [] %>
-              <%= link_to 'Add to WishList', "/wish_lists?book_id=#{@book.id}", :method => :post, class: 'btn btn-warning' %>
-              <%= link_to 'Add to BookShelf', "/book_shelfs?book_id=#{@book.id}", :method => :post, class: 'btn btn-warning' %>
-            <%else %>
-              <%= link_to 'Remove from BookShelf', "/book_shelfs?book_id=#{@book.id}", :method => :delete, class: 'btn btn-warning' %>
-            <% end %>
+          <% if WishList.where("book_id = #{@book.id} and user_id = #{@user.id}") == [] %>
+            <%= link_to 'Add to WishList', "/wish_lists?book_id=#{@book.id}", :method => :post, class: 'btn btn-primary' %>
           <% else %>
-            <%= link_to 'Remove from WishList', "/wish_lists?book_id=#{@book.id}", :method => :delete, class: 'btn btn-warning' %>
-            <%= link_to 'Add to BookShelf', "/book_shelfs?book_id=#{@book.id}", :method => :post, class: 'btn btn-warning' %>
+            <%= link_to 'Remove from WishList', "/wish_lists/0?book_id=#{@book.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
           <%end%>
+
+          <% if BookShelf.where("book_id = #{@book.id} and user_id = #{@user.id}") == [] %>
+            <%= link_to 'Add to BookShelf', "/book_shelfs?book_id=#{@book.id}", :method => :post, class: 'btn btn-warning' %>
+          <%else %>
+            <%= link_to 'Remove from BookShelf', "/book_shelfs/0?book_id=#{@book.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+          <% end %>
         <% end%>
     <% end %>
   </div>
@@ -70,10 +70,10 @@
             <!-- also links to edit and delete the review -->
         <p> <%= review.description %></p>
       </div>
-      <% if @user != '' && Review.where("book_id = #{@book.id} and user_id = #{@user.id}") != [] %>
+      <% if !session[:user_id].nil? && Review.where("book_id = #{@book.id} and user_id = #{@user.id}") != [] %>
         <div class="row">
-          <%= link_to 'Edit Review', edit_review_url(review.id), class: 'btn btn-warning' %>
-          <%= link_to 'Delete Review', "/reviews/#{review.id}", :method => :delete, class: 'btn btn-warning' %>
+          <%= link_to 'Edit Review', edit_review_url(review.id), class: 'btn btn-info' %>
+          <%= link_to 'Delete Review', "/reviews/#{review.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
         </div>
       <% end%>
       <hr>
@@ -84,7 +84,3 @@
     </div>
   <% end %>
 </div>
-
-		<!-- need to add author information -->
-
-<!-- list all chapters of a book -->

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, :except => [:create, :new, :show, :books]
-  before_action :identify_user, :except => [:create, :new, :show, :books]
+  before_action :require_login, :except => [:create, :new, :show]
+  before_action :identify_user, :except => [:create, :new, :show]
 
   #Check if any user is logged in before the action
   def require_login
@@ -21,11 +21,6 @@ class UsersController < ApplicationController
   #Can not access the list of all the users of the application
   def index
     redirect_to root_url
-  end
-
-  def books
-    show_user = User.find_by(:id => params[:user_id])
-    @books = show_user.books
   end
 
   def new
@@ -54,9 +49,7 @@ class UsersController < ApplicationController
 
   #implement following functionalities only if the right user is logged in, use filters
   def show
-    if session[:user_id].blank? || (session[:user_id] != @user.id)
-      @user = User.find_by(:id => params[:id])
-    end
+    @user = User.find_by(:id => params[:id])
   end
 
   def update
@@ -72,6 +65,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    reset_session
     @user.destroy()
 
     redirect_to root_url, notice: "User account deleted successfully!"

@@ -1,7 +1,8 @@
 class WishListsController < ApplicationController
-	before_action :require_login
-  	before_action :identify_user
-     before_action :redirect_user, :except => [:show, :create, :destroy]
+
+  before_action :require_login
+  before_action :identify_user
+  before_action :redirect_user, :except => [:show, :create, :destroy]
 
   #before every action identify the user that is logged in
   def identify_user
@@ -30,9 +31,12 @@ class WishListsController < ApplicationController
     w = WishList.new
     w.user_id = session[:user_id]
     w.book_id = params[:book_id]
-    w.save
 
-    redirect_to book_url(params[:book_id]), notice: "Book added to wishlist successfully!"
+    if w.save
+      redirect_to book_url(params[:book_id]), notice: "Book added to wishlist successfully!"
+    else
+      redirect_to book_url(params[:book_id]), notice: "Failed to add the book to the wishlist!"
+    end
   end
 
   def destroy

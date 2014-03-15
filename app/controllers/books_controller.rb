@@ -3,14 +3,14 @@ class BooksController < ApplicationController
   before_action :require_login, :except => [:index, :show, :books, :search]
   before_action :identify_user, :except => [:index, :show, :books, :search]
 
-  #before every action check if any user is logged in
+  #Check if user is logged in before the action
   def require_login
     if session[:user_id].blank?
       redirect_to root_url, notice: "Login is required to perform this action!"
     end
   end
 
-  #before every action identify the user that is logged in
+  #Identify the user before the action
   def identify_user
     @user = User.find_by(id: session[:user_id])
     if !@user
@@ -18,121 +18,144 @@ class BooksController < ApplicationController
     end
   end
 
-	#this will be our main page, for now this page only shows all books in the database
-	def index
-		@books = Book.all
+  def index
 
-		#for showing most commented books
-		#double check the result
+    @books = Book.all
+
+    #most commented books
     b = Hash.new
-		@books.each do |book|
-			b[book] = book.comments.count
-		end
-		@comment_counts = (b.sort_by{|k, v| v}.reverse)[0..3]
 
-		#for showing most popular books based on ratings
-		#double check the result
-		r = Hash.new
-		@books.each do |book|
-			r[book] = book.reviews.sum('rating')
-		end
-		@rating_counts = r.sort_by{|k,v| v}.reverse
-
-
-		#for showing authors who published a large amount of books
-		users = User.all
-		h = Hash.new
-		users.each do |u|
-			h[u] = u.books.count
-		end
-		@authors = (h.sort_by{|k, v| v}.reverse)[0..3]
-
-		#for showing newly published books
-          #also we can add newly added books
-		@new_books = Book.order("publish_date desc").limit(4)
-
-		#for showing top 4 genres (that has most books)
-		genre_count = Book.group(:genre).count.to_a.sort{|a,b| b[1] <=>a[1]}
-		@top_genre = genre_count[0..3]
-	end
-
-    #this has to be changed when all the logic is implemented
-    def books
-    	   user = User.find(params[:user_id])
-        @books = user.books
-        render "index"
+    @books.each do |book|
+      b[book] = book.comments.count
     end
 
-	# homepage for each individual book
-	def show
-		# need to reset the book_id everytime rails starts since it's auto increment
-		@book = Book.find(params[:id])
-            if !session[:user_id].nil?
-              @user = User.find(session[:user_id])
-            else
-              @user = ''
-            end
-	end
+    @comment_counts = (b.sort_by{|k, v| v}.reverse)[0..3]
 
+    #top rated books
+    r = Hash.new
 
-	#form for a new book
-	def new
-	end
+    @books.each do |book|
+      r[book] = book.reviews.sum('rating')
+    end
 
-	#create a new book
-	def create
-		#need to obtain author information (through user session??)
-  		b = Book.new
-  		b.title = params[:title]
-  		b.genre = params[:genre]
-    	b.image_url = params[:image_url]
-    	b.publish_date = params[:publish_date]
-        b.summary = params[:summary]
-    	b.save
+    @rating_counts = r.sort_by{|k,v| v}.reverse
 
-        a = Author.new
-        a.book_id = b.id
-        a.user_id = session[:user_id]
-        a.save
+    #productive authors
+    users = User.all
+    h = Hash.new
 
-    	redirect_to user_url(session[:user_id])
-	end
+    users.each do |u|
+      h[u] = u.books.count
+    end
 
-	def edit
+    @authors = (h.sort_by{|k, v| v}.reverse)[0..3]
+
+    #newly published books
+    @new_books = Book.order("publish_date desc").limit(4)
+
+    #top 4 genres
+    genre_count = Book.group(:genre).count.to_a.sort{|a,b| b[1] <=>a[1]}
+
+    @top_genre = genre_count[0..3]
+
+  end
+
+  #homepage for each individual book
+  def show
+    @book = Book.find(params[:id])
+    if !session[:user_id].nil?
+      @user = User.find_by(:id => session[:user_id])
+    end
+  end
+
+  def new
+    @book = Book.new
+    @author = Author.new
+  end
+
+  def new_author
+    @author = Author.new
+    @book = Book.find_by(:id => params[:book_id])
+    @users = User.all
+  end
+
+  def add_author
+    @author = Author.new
+    @author.user_id = params[:user_id]
+    @author.book_id = params[:book_id]
+
+    if @author.save
+      redirect_to book_url(params[:book_id]), :notice => "Author added successfully"
+    else
+      render "new_author"
+    end
+  end
+
+  #create a new book
+  def create
+    @book = Book.new
+    @book.title = params[:title]
+    @book.genre = params[:genre]
+    @book.image_url = params[:image_url]
+    @book.publish_date = params[:publish_date]
+    @book.summary = params[:summary]
+
+    if @book.save
+      @author = Author.new
+      @author.book_id = b.id
+      @author.user_id = session[:user_id]
+
+      if @author.save
+        redirect_to user_url(session[:user_id]), :notice => "Book added successfully!"
+      else
+        render "new"
+      end
+    else
+      render "new"
+    end
+    end
+
+    def edit
       @book = Book.find(params[:id])
+      @author = Author.new
       if Author.where("book_id = #{@book.id} and user_id = #{@user.id}") == []
         redirect_to book_url(@book.id), :notice => "You are not authorized to perform this action"
       end
     end
 
-	def update
-        b = Book.find(params[:id])
-        b.title = params[:title]
-        b.genre = params[:genre]
-        b.image_url = params[:image_url]
-        b.publish_date = params[:publish_date]
-        b.summary = params[:summary]
-        b.save
-
-        redirect_to book_url(b.id), :notice => "Changes made to the book successfully"
-	end
-
-	def destroy
+    def update
       @book = Book.find(params[:id])
+      @book.title = params[:title]
+      @book.genre = params[:genre]
+      @book.image_url = params[:image_url]
+      @book.publish_date = params[:publish_date]
+      @book.summary = params[:summary]
 
-      @book.destroy()
-
-      redirect_to root_url, notice: "Book deleted successfully!"
-	end
-
-  def search
-    @search_results = nil
-    if params[:term] != nil
-      @search_results = Book.search(params[:term]).order("created_at desc")
-      if @search_results.blank?
-        @search_results = nil
+      if @book.save
+        redirect_to book_url(b.id), :notice => "Changes made to the book successfully"
+      else
+        render "edit"
       end
     end
-  end
+
+    def destroy
+      book = Book.find(params[:id])
+
+      book.destroy()
+
+      redirect_to root_url, notice: "Book deleted successfully!"
+    end
+
+    def search
+      @search_results = nil
+      @term = params[:term]
+
+      if @term != nil
+        @search_results = Book.search(@term).order("created_at desc")
+        if @search_results.blank?
+          @search_results = nil
+        end
+      end
+    end
 
 end

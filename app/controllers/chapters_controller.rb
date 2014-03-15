@@ -29,32 +29,31 @@ class ChaptersController < ApplicationController
   end
 
   def new
+    @chapter = Chapter.new
   end
 
   def create
-    c = Chapter.new
-    c.title = params[:title]
-    c.book_id = @book.id
-    c.description = params[:description]
-    c.content_url = params[:content_url]
-    if @book.chapters != []
-      c.number = @book.chapters.order("number desc").first.number + 1
-    else
-      c.number = 1
-    end
-    c.save
+    @chapter = Chapter.new
+    @chapter.title = params[:title]
+    @chapter.book_id = @book.id
+    @chapter.description = params[:description]
+    @chapter.content_url = params[:content_url]
 
-    redirect_to chapters_url + "?book_id=#{@book.id}", :notice => "Chapter added successfully"
+    if @book.chapters != []
+      @chapter.number = @book.chapters.order("number desc").first.number + 1
+    else
+      @chapter.number = 1
+    end
+
+    if @chapter.save
+      redirect_to chapters_url + "?book_id=#{@book.id}", :notice => "Chapter added successfully"
+    else
+      render "new"
+    end
   end
 
   def show
     @chapter = Chapter.find(params[:id])
-
-    if !session[:user_id].nil?
-      @user = User.find(session[:user_id])
-    else
-      @user = ''
-    end
   end
 
   def edit
@@ -62,18 +61,21 @@ class ChaptersController < ApplicationController
 
 # define a method for common logic between create and update
   def update
-    chapter.title = params[:title]
-    chapter.book_id = @book.id
-    chapter.description = params[:description]
-    chapter.content_url = params[:content_url]
-    chapter.number = @book.chapters.order("number desc").first.number + 1
-    chapter.save
+    @chapter.title = params[:title]
+    @chapter.book_id = @book.id
+    @chapter.description = params[:description]
+    @chapter.content_url = params[:content_url]
+    @chapter.number = @book.chapters.order("number desc").first.number + 1
 
-    redirect_to chapters_url + "?book_id=#{@book.id}", :notice => "Changes made to the chapter successfully"
+    if @chapter.save
+      redirect_to chapters_url + "?book_id=#{@book.id}", :notice => "Changes made to the chapter successfully"
+    else
+      render "edit"
+    end
   end
 
   def destroy
-    @chapter.destroy()
+    chapter.destroy()
 
     redirect_to chapters_url + "?book_id=#{@book.id}", notice: "Chapter deleted successfully!"
   end

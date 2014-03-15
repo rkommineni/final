@@ -1,11 +1,23 @@
 <h2> Your BookShelf </h2>
 
-<div class = "row">
-<% if @bookshelfs == [] %>
-  <p>No Books on your bokshelf</p>
-<% else %>
-  <% @bookshelfs.each do |bookshelf| %>
-    <p><a href = "/books/<%= bookshelf.book.id %>"> <%= bookshelf.book.title %> </a></p>
+<div class="row">
+  <% if @bookshelfs == [] %>
+    <p>No Books on your bokshelf</p>
+  <% else %>
+    <% @bookshelfs.in_groups_of(4, false).each_with_index do |group, index| %>
+      <div class="row top-margin">
+        <% group.each do |book| %>
+          <div class='col-lg-3 test'>
+            <a href = "/books/<%= book.id %>">
+              <% if book.image_url != nil && book.image_url != "" %>
+                <%= image_tag book.image_url, :class => "image-responsive" %>
+              <% else %>
+                <p class = "image-responsive unavailable"><%= book.title %></p>
+              <% end %>
+            </a>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
- <% end %>
 </div>

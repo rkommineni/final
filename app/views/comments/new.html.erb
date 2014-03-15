@@ -1,11 +1,22 @@
 <div>
   <h1> Add a New Comment</h1>
 </div>
+
+<% if @comment.errors.any? %>
+  <div class="alert alert-dismissable alert-danger">
+      <ul>
+        <% @comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+  </div>
+<% end %>
+
 <%= form_tag "/comments" do%>
 <!-- Do form validations -->
   <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>
-    <input class="form-control" type="text" placeholder="Description" name="description">
+    <input class="form-control" type="text" value="<%= @comment.description%>" placeholder="Description" name="description" required>
   </div>
   <br>
 
@@ -17,7 +28,13 @@
 
   <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
-    <input class="form-control" type="text" value="<%= @book.title%>" placeholder="Book Title" name="book_name" readonly>
+    <input class="form-control" type="text" value="<%= @chapter.title%>" placeholder="Chapter Title" name="chapter_name" readonly>
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @chapter.book.title%>" placeholder="Book Title" name="book_name" readonly>
   </div>
   <br>
 
@@ -25,3 +42,6 @@
 
 <% end %>
 
+<script>
+  $("form").validate();
+</script>
