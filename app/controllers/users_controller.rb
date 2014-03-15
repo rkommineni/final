@@ -53,16 +53,30 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.name = params[:name]
-    @user.username = params[:username]
-    @user.image_url = params[:image_url]
-
-    if @user.save
-      redirect_to "/users/:#{@user.id}", notice: "Changes saved successfully!"
+    if @user.update_attributes(:username => params[:username],  :name => params[:name], :image_url => params[:image_url]) 
+      redirect_to "/users/#{@user.id}", notice: "Changes saved successfully!"
     else
       render "edit"
     end
   end
+
+  def newPassword
+    #render change password form
+  end
+
+  def change
+    #change the password
+    #bcrypt for secure password
+    @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
+
+    if @user.save
+      redirect_to "/users/#{@user.id}", notice: "Changes saved successfully!"
+    else 
+      render 'newPassword'
+    end
+  end
+
 
   def destroy
     reset_session

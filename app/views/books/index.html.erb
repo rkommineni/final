@@ -3,7 +3,7 @@
 <div class = "row">
   <h2> Books </h2>
   <div class = "row">
-    <h4> Newly Published Books </h4>
+    <h4>Newly Published Books </h4>
     <% counter = 0 %>
     <% @new_books.each do |book| %>
         <% if counter < 4 %>
@@ -75,9 +75,8 @@
 </div>
 
 <div class="row">
-  <h2>Authors</h2>
+  <h2>Productive Authors </h2>
     <div class = "col-md-3">
-      <h4> Productive Authors </h4>
         <% @authors.each do |a, c| %>
           <p><a href = "/users/<%= a.id %>"> <%= a.name %> </a></p>
         <% end %>

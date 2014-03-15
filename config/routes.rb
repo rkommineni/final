@@ -6,6 +6,9 @@ Final::Application.routes.draw do
   get "/books/author/:book_id" => "books#new_author"
   post "/books/author/:book_id" => "books#add_author"
 
+  get "/users/newPassword/:user_id" => "users#newPassword"
+  post "/users/newPassword/:user_id" => "users#change"
+
   resources :book_shelfs
   resources :wish_lists
   resources :books

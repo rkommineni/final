@@ -50,7 +50,8 @@
         <p class="navbar-text navbar-right">Signed in as <a href=<%= user_url(session[:user_id])%> class="navbar-link"><%= User.find(session[:user_id]).name%></a>
       <%end%>
 
-      <form class="navbar-form navbar-right" role="search" action="/books/search">
+
+     <form class="navbar-form navbar-right" role="search" action="/books/search">
         <div class="form-group">
           <input name = "term" type="text" class="form-control" placeholder="Search book title">
         </div>
