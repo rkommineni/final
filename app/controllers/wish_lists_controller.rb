@@ -40,7 +40,7 @@ class WishListsController < ApplicationController
   end
 
   def destroy
-    w = WishList.where("user_id = #{session[:user_id]} and book_id = #{params[:book_id]}")
+    w = WishList.where("user_id = #{session[:user_id]} and book_id = #{params[:book_id]}").first
 
     w.destroy()
 

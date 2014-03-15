@@ -6,7 +6,8 @@
   <% else %>
     <% @bookshelfs.in_groups_of(4, false).each_with_index do |group, index| %>
       <div class="row top-margin">
-        <% group.each do |book| %>
+        <% group.each do |bookshelf| %>
+          <% book = Book.find_by(:id => bookshelf.book_id) %>
           <div class='col-lg-3 test'>
             <a href = "/books/<%= book.id %>">
               <% if book.image_url != nil && book.image_url != "" %>

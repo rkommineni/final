@@ -33,18 +33,18 @@ class BookShelfsController < ApplicationController
     bs.book_id = params[:book_id]
 
     if bs.save
-      redirect_to book_url(params[:book_id]), notice: "Book added to wishlist successfully!"
+      redirect_to book_url(params[:book_id]), notice: "Book added to bookshelf successfully!"
     else
       redirect_to book_url(params[:book_id]), notice: "Failed to add the book to the bookshelf!"
     end
   end
 
   def destroy
-    bs = BookShelf.where("user_id = #{session[:user_id]} and book_id = #{params[:book_id]}")
+    bs = BookShelf.where("user_id = #{session[:user_id]} and book_id = #{params[:book_id]}").first
 
     bs.destroy()
 
-    redirect_to book_url(params[:book_id]), notice: "Book removed from wishlist successfully!"
+    redirect_to book_url(params[:book_id]), notice: "Book removed from bookshelf successfully!"
   end
 
 end
