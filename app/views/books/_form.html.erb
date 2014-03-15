@@ -25,6 +25,12 @@
 
   <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
+    <input class="form-control" type="text" value="<%= @book.publish_date%>" placeholder="Published Date: yyyy-mm-dd" name="publish_date" required>
+  </div>
+  <br>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i> </span>
     <input class="form-control" type="text" value="<%= @book.image_url%>" placeholder="Image url" name="image_url">
   </div>
   <br>

@@ -54,6 +54,9 @@ class ChaptersController < ApplicationController
 
   def show
     @chapter = Chapter.find(params[:id])
+    if !session[:user_id].nil?
+      @user = User.find_by(:id => session[:user_id])
+    end
   end
 
   def edit
@@ -75,7 +78,7 @@ class ChaptersController < ApplicationController
   end
 
   def destroy
-    chapter.destroy()
+    @chapter.destroy()
 
     redirect_to chapters_url + "?book_id=#{@book.id}", notice: "Chapter deleted successfully!"
   end

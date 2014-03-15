@@ -1,7 +1,7 @@
 <h2> Search Results for "<%= @term %>" </h2>
 
 <div class="row">
-  <% if @search_results != nil  %>
+  <% if @search_results == nil  %>
     <p>No Search Results</p>
   <% else %>
     <% @search_results.in_groups_of(4, false).each_with_index do |group, index| %>

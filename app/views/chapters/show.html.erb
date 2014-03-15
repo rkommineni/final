@@ -18,7 +18,7 @@
       <% if Author.where("book_id = #{@chapter.book.id} and user_id = #{@user.id}") != [] %>
          <!-- how to link to delete link
         only the author/creator can delete/edit the book details. also chapters can be added-->
-        <%= link_to 'Delete Chapter', "/chapters/delete/#{@chapter.id}", data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+        <%= link_to 'Delete Chapter', "/chapters/#{@chapter.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
       <% else %>
         <%= link_to 'Comment', new_comment_url + "?chapter_id=#{@chapter.id}", class: 'btn btn-primary' %>
       <% end%>

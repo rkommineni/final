@@ -100,9 +100,10 @@ class BooksController < ApplicationController
     @book.publish_date = params[:publish_date]
     @book.summary = params[:summary]
 
+    @author = Author.new
+
     if @book.save
-      @author = Author.new
-      @author.book_id = b.id
+      @author.book_id = @book.id
       @author.user_id = session[:user_id]
 
       if @author.save
@@ -113,7 +114,7 @@ class BooksController < ApplicationController
     else
       render "new"
     end
-    end
+  end
 
     def edit
       @book = Book.find(params[:id])
@@ -132,7 +133,7 @@ class BooksController < ApplicationController
       @book.summary = params[:summary]
 
       if @book.save
-        redirect_to book_url(b.id), :notice => "Changes made to the book successfully"
+        redirect_to book_url(@book.id), :notice => "Changes made to the book successfully"
       else
         render "edit"
       end
@@ -150,8 +151,8 @@ class BooksController < ApplicationController
       @search_results = nil
       @term = params[:term]
 
-      if @term != nil
-        @search_results = Book.search(@term).order("created_at desc")
+      if params[:term] != nil
+        @search_results = Book.search(params[:term]).order("created_at desc")
         if @search_results.blank?
           @search_results = nil
         end

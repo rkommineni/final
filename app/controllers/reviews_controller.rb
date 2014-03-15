@@ -36,6 +36,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @book = Book.find(params[:book_id])
     @review = Review.new
     @review.description = params[:description]
     @review.user_id = session[:user_id]
@@ -50,6 +51,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @book = Book.find(params[:book_id])
     @review = Review.find(params[:id])
       if Review.where("id = #{@review.id} and user_id = #{@user.id}") == []
         redirect_to book_url(@book.id), :notice => "You are not authorized to perform this action"

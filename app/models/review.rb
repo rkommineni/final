@@ -6,6 +6,7 @@ class Review < ActiveRecord::Base
  #model validations
   validates :user_id, presence: true
   validates :book_id, presence: true
+  validates :rating, presence: true
 
   #model callbacks
   before_save :check_in_books_users

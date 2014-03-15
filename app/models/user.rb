@@ -12,14 +12,10 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: { :message => " is associated with another account" }
   validates :username, presence: true
   validates :username, uniqueness: { :message => " is already taken. Please choose another username" }
-  
-  validates :password, presence: true
-  validates :password, length: { in: 6..15, :message => " should contain 6 to 15 characters" }
-  validates :password_confirmation, presence: true
 
-  validates :password, presence: true, :on => :create
-  validates :password, length: { in: 6..15, :message => " should contain 6 to 15 characters" }, :on => :create
-  validates :password_confirmation, presence: true, :on => :create
+  validates :password, presence: true, :if => :password_digest_changed?
+  validates :password, length: { in: 6..15, :message => " should contain 6 to 15 characters" }, :if => :password_digest_changed?
+  validates :password_confirmation, presence: true, :if => :password_digest_changed?
   #validate email address based on the syntax
 
   #using password digest
