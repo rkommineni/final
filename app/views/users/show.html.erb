@@ -14,6 +14,7 @@
 
     <% if !session[:user_id].blank? && (session[:user_id] == @user.id) %>
         <%= link_to 'Edit Profile', edit_user_url(@user.id), class: 'btn btn-info' %>
+        <%= link_to 'Change Password', "/users/newPassword/#{@user.id}", class: 'btn btn-info' %>
         <%= link_to 'Delete Profile', user_url(@user.id), :method => :delete, class: 'btn btn-warning' %>
         <%= link_to 'Add Book', new_book_url, class: 'btn btn-primary' %>
         <%= link_to 'Statistics', "", class: 'btn btn-info' %>
@@ -21,6 +22,7 @@
   </div>
 </div>
 
+<hr>
 <div class="row">
 <h2> Books </h2>
 <% @user.books.in_groups_of(4, false).each_with_index do |group, index| %>

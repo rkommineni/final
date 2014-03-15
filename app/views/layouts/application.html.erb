@@ -44,9 +44,11 @@
           </a></p>
         <% end %>
       </ul>
-<% if !session[:user_id].nil? %>
+
+      <% if !session[:user_id].nil? %>
         <p class="navbar-text navbar-right">Signed in as <a href=<%= user_url(session[:user_id])%> class="navbar-link"><%= User.find(session[:user_id]).name%></a>
       <%end%>
+
      <form class="navbar-form navbar-right" role="search" action="/books/search">
         <div class="form-group">
           <input name = "term" type="text" class="form-control" placeholder="Search book title">

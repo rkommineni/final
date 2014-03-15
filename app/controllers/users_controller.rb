@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, :except => [:create, :new, :show, :books]
-  before_action :identify_user, :except => [:create, :new, :show, :books]
+  before_action :require_login, :except => [:create, :new, :show]
+  before_action :identify_user, :except => [:create, :new, :show]
 
   #Check if any user is logged in before the action
   def require_login
@@ -54,22 +54,34 @@ class UsersController < ApplicationController
 
   #implement following functionalities only if the right user is logged in, use filters
   def show
-    if session[:user_id].blank? || (session[:user_id] != @user.id)
-      @user = User.find_by(:id => params[:id])
-    end
+    @user = User.find_by(:id => params[:id])
   end
 
   def update
-    @user.name = params[:name]
-    @user.username = params[:username]
-    @user.image_url = params[:image_url]
-
-    if @user.save
-      redirect_to "/users/:#{@user.id}", notice: "Changes saved successfully!"
+    if @user.update_attributes(:username => params[:username],  :name => params[:name], :image_url => params[:image_url]) 
+      redirect_to "/users/#{@user.id}", notice: "Changes saved successfully!"
     else
       render "edit"
     end
   end
+
+  def newPassword
+    #render change password form
+  end
+
+  def change
+    #change the password
+    #bcrypt for secure password
+    @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
+
+    if @user.save
+      redirect_to "/users/#{@user.id}", notice: "Changes saved successfully!"
+    else 
+      render 'newPassword'
+    end
+  end
+
 
   def destroy
     @user.destroy()
