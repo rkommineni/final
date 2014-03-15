@@ -4,7 +4,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '>= 1.3.9'
+#gem 'sqlite3', '>= 1.3.9'
+# Use pg as the database for Active Record
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -46,3 +48,5 @@ gem "seed_dump", "~> 3.1.0"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+ruby "1.9.3"
