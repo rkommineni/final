@@ -30,6 +30,9 @@ Final::Application.routes.draw do
   get "/users/newPassword/:user_id" => "users#newPassword"
   post "/users/newPassword/:user_id" => "users#change"
 
+  get "/users/newPassword/:user_id" => "users#newPassword"
+  post "/users/newPassword/:user_id" => "users#change"
+
   resources :book_shelfs
   resources :wish_lists
   resources :books
