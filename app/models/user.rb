@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   #model associations
   has_many :authors, :dependent => :destroy
-  has_many :books, :through => :authors, :dependent => :destroy
+  has_many :books, :through => :authors
   has_many :comments, :dependent => :destroy
+  has_many :reviews, :dependent => :destroy
   has_many :wish_lists, :dependent => :destroy
   has_many :book_shelves, :dependent => :destroy
 
