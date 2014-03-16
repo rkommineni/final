@@ -24,16 +24,16 @@ end
 
 #populate users table/model
 #look into what are industry standards for password
-users = [{:name => "Richard H. Thaler", :email => "rthaler@nudge.com", :username => "rthaler", :image_url => "", :password => "nudge", :password_confirmation => "nudge"},
-              {:name => "Jonathan Maberry", :email => "jmaberry@rot.com", :username => "jmaberry", :image_url => "", :password => "rot", :password_confirmation => "rot"},
-              {:name => "Allie Brosh", :email => "abrosh@hyper.com", :username => "abrosh", :image_url => "", :password => "hyper", :password_confirmation => "hyper"},
-              {:name => "S.E.Hinton", :email => "shinton@outsiders.com", :username => "shinton", :image_url => "", :password => "outsiders", :password_confirmation => "outsiders"},
-              {:name => "J.R.R.Tolkien", :email => "jrrtolkien@lotr.com", :username => "jrrtolkien", :image_url => "", :password => "lotr", :password_confirmation => "lotr"},
-              {:name => "Mario Puzo", :email => "mpuzo@godfather.com", :username => "mpuzo", :image_url => "", :password => "godfather", :password_confirmation => "godfather"},
-              {:name => "J.K.Rowling", :email => "jkrowling@harry.com", :username => "jkrowling", :image_url => "", :password => "harry", :password_confirmation => "harry"},
-              {:name => "Alan Dean Foster", :email => "adean@trek.com", :username => "adean", :image_url => "", :password => "trek", :password_confirmation => "trek"},
-              {:name => "Terry Austin", :email => "taustin@wars.com", :username => "taustin", :image_url => "", :password => "wars", :password_confirmation => "wars"},
-            {:name => "Arthur Golden", :email => "agolden@geisha.com", :username => "agolden", :image_url => "", :password => "geisha", :password_confirmation => "geisha"}]
+users = [{:name => "Richard H. Thaler", :email => "rthaler@nudge.com", :username => "rthaler", :image_url => "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5HG2t1tMloE6xMBl9v8U3xBHm8_0Myh3Ejwr4odQawMDTooY7Ww", :password => "goodbooks", :password_confirmation => "goodbooks"},
+              {:name => "Jonathan Maberry", :email => "jmaberry@rot.com", :username => "jmaberry", :image_url => "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5HG2t1tMloE6xMBl9v8U3xBHm8_0Myh3Ejwr4odQawMDTooY7Ww", :password => "goodbooks", :password_confirmation => "goodbooks"},
+              {:name => "Allie Brosh", :email => "abrosh@hyper.com", :username => "abrosh", :image_url => "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5HG2t1tMloE6xMBl9v8U3xBHm8_0Myh3Ejwr4odQawMDTooY7Ww", :password => "goodbooks", :password_confirmation => "goodbooks"},
+              {:name => "S.E.Hinton", :email => "shinton@outsiders.com", :username => "shinton", :image_url => "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5HG2t1tMloE6xMBl9v8U3xBHm8_0Myh3Ejwr4odQawMDTooY7Ww", :password => "goodbooks", :password_confirmation => "goodbooks"},
+              {:name => "J.R.R.Tolkien", :email => "jrrtolkien@lotr.com", :username => "jrrtolkien", :image_url => "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5HG2t1tMloE6xMBl9v8U3xBHm8_0Myh3Ejwr4odQawMDTooY7Ww", :password => "goodbooks", :password_confirmation => "goodbooks"},
+              {:name => "Mario Puzo", :email => "mpuzo@godfather.com", :username => "mpuzo", :image_url => "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5HG2t1tMloE6xMBl9v8U3xBHm8_0Myh3Ejwr4odQawMDTooY7Ww", :password => "goodbooks", :password_confirmation => "goodbooks"},
+              {:name => "J.K.Rowling", :email => "jkrowling@harry.com", :username => "jkrowling", :image_url => "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5HG2t1tMloE6xMBl9v8U3xBHm8_0Myh3Ejwr4odQawMDTooY7Ww", :password => "goodbooks", :password_confirmation => "goodbooks"},
+              {:name => "Alan Dean Foster", :email => "adean@trek.com", :username => "adean", :image_url => "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5HG2t1tMloE6xMBl9v8U3xBHm8_0Myh3Ejwr4odQawMDTooY7Ww", :password => "goodbooks", :password_confirmation => "goodbooks"},
+              {:name => "Terry Austin", :email => "taustin@wars.com", :username => "taustin", :image_url => "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5HG2t1tMloE6xMBl9v8U3xBHm8_0Myh3Ejwr4odQawMDTooY7Ww", :password => "goodbooks", :password_confirmation => "goodbooks"},
+            {:name => "Arthur Golden", :email => "agolden@geisha.com", :username => "agolden", :image_url => "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5HG2t1tMloE6xMBl9v8U3xBHm8_0Myh3Ejwr4odQawMDTooY7Ww", :password => "goodbooks", :password_confirmation => "goodbooks"}]
 
 User.destroy_all
 
@@ -61,4 +61,6 @@ end
 
 #populate chapters for the books
 
+
 #populate some comments and reviews
+
