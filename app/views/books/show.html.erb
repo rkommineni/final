@@ -29,7 +29,7 @@
          <!-- how to link to delete link
         only the author/creator can delete/edit the book details. also chapters can be added-->
         <%= link_to 'Edit Book', edit_book_url(@book.id), class: 'btn btn-info' %>
-        <%= link_to 'Delete Book', "/books/#{@book.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+        <%= link_to 'Delete Book', "/books/#{@book.id}", :method => :delete, class: 'btn btn-warning' %>
         <% else %>
           <% if Review.where("book_id = #{@book.id} and user_id = #{@user.id}") == [] %>
             <%= link_to 'Submit Review', new_review_url + "?book_id=#{@book.id}", class: 'btn btn-warning' %>
