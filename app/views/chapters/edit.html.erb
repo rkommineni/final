@@ -2,7 +2,7 @@
   <h1> Edit chapter</h1>
 </div>
 
-<%= form_tag "/chapters", :method => 'patch' do%>
+<%= form_tag "/chapters?book_id=#{@book.id}", :method => 'patch' do%>
 
   <%= render "form" %>
   <%= submit_tag "Save" %>
