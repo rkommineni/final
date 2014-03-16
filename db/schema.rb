@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307013932) do
+ActiveRecord::Schema.define(version: 20140315224847) do
 
   create_table "authors", force: true do |t|
     t.integer  "book_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20140307013932) do
     t.text     "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "summary"
+    t.text     "summary",      limit: 255
   end
 
   create_table "chapters", force: true do |t|
