@@ -19,7 +19,6 @@
         <%= button_to 'Delete Profile', "/users/#{@user.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
         <br>
         <%= link_to 'Add Book', new_book_url, class: 'btn btn-primary' %>
-        <%= link_to 'Statistics', "", class: 'btn btn-info' %>
     <% end %>
   </div>
 </div>
