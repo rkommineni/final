@@ -12,7 +12,7 @@
   </div>
 <% end %>
 
-<%= form_tag "/comments" do%>
+<%= form_tag "/comments?chapter_id=#{@chapter.id}" do%>
 <!-- Do form validations -->
   <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>
