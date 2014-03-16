@@ -43,7 +43,7 @@
       </div>
       <% if !session[:user_id].nil? && Comment.where("chapter_id = #{@chapter.id} and user_id = #{@user.id}") != [] %>
         <div class="row">
-          <%= button_to 'Delete Comment', "/comments/#{comment.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+          <%= button_to 'Delete Comment', "/comments/#{comment.id}?chapter_id=#{@chapter.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
         </div>
       <% end%>
       <hr>
