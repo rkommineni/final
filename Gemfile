@@ -9,7 +9,8 @@ gem 'rails', '4.0.2'
 gem 'pg'
 
 #for web server using heroku
-gem 'unicorn'
+gem "eventmachine", ">= 1.0.0.beta"
+gem 'thin'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

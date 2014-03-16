@@ -1,1 +1,3 @@
-web: bundle exec unicorn -p $PORT -E $RACK_ENV
+web:    bundle exec thin start -p $PORT
+worker: bundle exec rake resque:work QUEUE=*
+clock:  bundle exec rake resque:scheduler
