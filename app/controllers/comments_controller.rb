@@ -42,7 +42,7 @@ class CommentsController < ApplicationController
     @comment.chapter_id = params[:chapter_id]
 
     if @comment.save
-      redirect_to chapter_url(params[:chapter_id]) + "?book_id=#{Chapter.find(params[:chapter_id]).book.id}", :notice => "Comment added successfully"
+      redirect_to chapter_url(params[:chapter_id]), :notice => "Comment added successfully"
     else
       render "new"
     end
