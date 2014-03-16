@@ -35,7 +35,7 @@
     <% @chapter.comments.each do |comment| %>
           <div class = "row">
             <div class="col-md-3">
-              <p class="navbar-text navbar-left"><a href="<%= user_url(review.user.id) %>" class="navbar-link"><%= comment.user.name %></a></p>
+              <p class="navbar-text navbar-left"><a href="<%= user_url(comment.user.id) %>" class="navbar-link"><%= comment.user.name %></a></p>
             </div>
           </div>
       <div class = "row">
