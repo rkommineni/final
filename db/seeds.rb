@@ -120,23 +120,27 @@ r.user_id = uFirst
 r.description = "Not as good as the first book."
 r.book_id = bFirst + 6
 r.rating = 4
+r.save
 
 r = Review.new
 r.user_id = uFirst
 r.description = "A good read."
 r.book_id = bFirst + 1
 r.rating = 3
+r.save
 
 r = Review.new
 r.user_id = uFirst + 1
 r.description = "Thrilled."
 r.book_id = bFirst + 6
 r.rating = 5
+r.save
 
 r = Review.new
 r.user_id = uFirst + 2
 r.description = "Epic. Amazing."
 r.book_id = bFirst + 4
 r.rating = 5
+r.save
 
 
