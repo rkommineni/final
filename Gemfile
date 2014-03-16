@@ -8,6 +8,9 @@ gem 'rails', '4.0.2'
 # Use pg as the database for Active Record
 gem 'pg'
 
+#for web server using heroku
+gem 'unicorn'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
