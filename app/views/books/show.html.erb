@@ -29,22 +29,24 @@
          <!-- how to link to delete link
         only the author/creator can delete/edit the book details. also chapters can be added-->
         <%= link_to 'Edit Book', edit_book_url(@book.id), class: 'btn btn-info' %>
-        <%= link_to 'Delete Book', "/books/#{@book.id}", :method => :delete, class: 'btn btn-warning' %>
+        <br>
+        <%= button_to 'Delete Book', "/books/#{@book.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+        <br>
         <% else %>
           <% if Review.where("book_id = #{@book.id} and user_id = #{@user.id}") == [] %>
             <%= link_to 'Submit Review', new_review_url + "?book_id=#{@book.id}", class: 'btn btn-warning' %>
           <%end%>
 
           <% if WishList.where("book_id = #{@book.id} and user_id = #{@user.id}") == [] %>
-            <%= link_to 'Add to WishList', "/wish_lists?book_id=#{@book.id}", :method => :post, class: 'btn btn-warning' %>
+            <%= button_to 'Add to WishList', "/wish_lists?book_id=#{@book.id}", :method => :post, class: 'btn btn-warning' %>
           <% else %>
-            <%= link_to 'Remove from WishList', "/wish_lists/0?book_id=#{@book.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+            <%= button_to 'Remove from WishList', "/wish_lists/0?book_id=#{@book.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
           <% end %>
 
           <% if BookShelf.where("book_id = #{@book.id} and user_id = #{@user.id}") == [] %>
-            <%= link_to 'Add to BookShelf', "/book_shelfs?book_id=#{@book.id}", :method => :post, class: 'btn btn-warning' %>
+            <%= button_to 'Add to BookShelf', "/book_shelfs?book_id=#{@book.id}", :method => :post, class: 'btn btn-warning' %>
           <% else %>
-              <%= link_to 'Remove from BookShelf', "/book_shelfs/0?book_id=#{@book.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+              <%= button_to 'Remove from BookShelf', "/book_shelfs/0?book_id=#{@book.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
           <% end %>
         <% end%>
     <% end %>
@@ -73,7 +75,7 @@
       <% if !session[:user_id].nil? && Review.where("book_id = #{@book.id} and user_id = #{@user.id}") != [] %>
         <div class="row">
           <%= link_to 'Edit Review', edit_review_url(review.id) + "?book_id=#{@book.id}", class: 'btn btn-info' %>
-          <%= link_to 'Delete Review', "/reviews/#{review.id}?book_id=#{@book.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+          <%= button_to 'Delete Review', "/reviews/#{review.id}?book_id=#{@book.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
         </div>
       <% end%>
       <hr>

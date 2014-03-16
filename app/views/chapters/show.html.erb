@@ -20,7 +20,7 @@
          <!-- how to link to delete link
         only the author/creator can delete/edit the book details. also chapters can be added-->
         <%= link_to 'Edit Chapter', edit_chapter_url(@chapter.id), class: 'btn btn-info' %>
-        <%= link_to 'Delete Chapter', "/chapters/#{@chapter.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+        <%= button_to 'Delete Chapter', "/chapters/#{@chapter.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
       <% else %>
         <%= link_to 'Comment', new_comment_url + "?chapter_id=#{@chapter.id}", class: 'btn btn-primary' %>
       <% end%>
@@ -43,7 +43,7 @@
       </div>
       <% if !session[:user_id].nil? && Comment.where("chapter_id = #{@chapter.id} and user_id = #{@user.id}") != [] %>
         <div class="row">
-          <%= link_to 'Delete Comment', "/comments/#{comment.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+          <%= button_to 'Delete Comment', "/comments/#{comment.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
         </div>
       <% end%>
       <hr>

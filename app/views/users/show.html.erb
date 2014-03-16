@@ -15,8 +15,9 @@
     <% if !session[:user_id].blank? && (session[:user_id] == @user.id) %>
         <%= link_to 'Edit Profile', edit_user_url(@user.id), class: 'btn btn-info' %>
         <%= link_to 'Change Password', "/users/newPassword/#{@user.id}", class: 'btn btn-info' %>
+        <br>
         <%= button_to 'Delete Profile', "/users/#{@user.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
-
+        <br>
         <%= link_to 'Add Book', new_book_url, class: 'btn btn-primary' %>
         <%= link_to 'Statistics', "", class: 'btn btn-info' %>
     <% end %>
