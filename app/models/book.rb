@@ -15,6 +15,6 @@ class Book < ActiveRecord::Base
   #add a content url and validate it
 
   def self.search(query)
-  	where("title like ?", "%lower(#{query})%")
+  	where("title like ?", "%#{query}%")
   end
 end

@@ -13,13 +13,11 @@
   <div class='col-md-7'>
     <h1><%= (@chapter.number).to_s + ". " + @chapter.title %></h1>
     <h4><%= @chapter.description %></h4>
-    <p><strong>Content URL: </strong><%= @chapter.content_url %></p>
 
     <% if !session[:user_id].nil? %>
       <% if Author.where("book_id = #{@chapter.book.id} and user_id = #{@user.id}") != [] %>
          <!-- how to link to delete link
         only the author/creator can delete/edit the book details. also chapters can be added-->
-        <%= link_to 'Edit Chapter', edit_chapter_url(@chapter.id), class: 'btn btn-info' %>
         <%= link_to 'Delete Chapter', "/chapters/#{@chapter.id}", :method => :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-warning' %>
       <% else %>
         <%= link_to 'Comment', new_comment_url + "?chapter_id=#{@chapter.id}", class: 'btn btn-primary' %>
