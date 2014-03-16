@@ -52,6 +52,8 @@ end
 bFirst = Book.first.id
 uFirst = User.first.id
 
+Author.destroy_all
+
 (0..9).each do |id|
   a = Author.new
   a.book_id = id + bFirst
@@ -60,7 +62,81 @@ uFirst = User.first.id
 end
 
 #populate chapters for the books
+Chapter.destroy_all
 
+c = Chapter.new
+c.title = "The Beginning"
+c.book_id = bFirst
+c.description = "This is the first chapter of the book."
+c.content_url = "www.amazon.com"
+c.number = 1
+c.save
+
+c = Chapter.new
+c.title = "The Second"
+c.book_id = bFirst
+c.description = "This is the second chapter of the book."
+c.content_url = "www.amazon.com"
+c.number = 2
+c.save
+
+c = Chapter.new
+c.title = "First Rot"
+c.book_id = bFirst + 1
+c.description = "The background of the rot."
+c.content_url = "www.google.com"
+c.number = 1
+c.save
+
+c = Chapter.new
+c.title = "Second Rot"
+c.book_id = bFirst + 1
+c.description = "The next background of the rot."
+c.content_url = "www.google.com"
+c.number = 2
+c.save
+
+c = Chapter.new
+c.title = "The Disaster"
+c.book_id = bFirst + 2
+c.description = "Let's begin the disaster."
+c.content_url = "www.yahoo.com"
+c.number = 1
+c.save
+
+c = Chapter.new
+c.title = "The Disaster Continues"
+c.book_id = bFirst + 2
+c.description = "Let's get into it."
+c.content_url = "www.yahoo.com"
+c.number = 2
+c.save
 
 #populate some comments and reviews
+Review.destroy_all
+
+r = Review.new
+r.user_id = uFirst
+r.description = "Not as good as the first book."
+r.book_id = bFirst + 6
+r.rating = 4
+
+r = Review.new
+r.user_id = uFirst
+r.description = "A good read."
+r.book_id = bFirst + 1
+r.rating = 3
+
+r = Review.new
+r.user_id = uFirst + 1
+r.description = "Thrilled."
+r.book_id = bFirst + 6
+r.rating = 5
+
+r = Review.new
+r.user_id = uFirst + 2
+r.description = "Epic. Amazing."
+r.book_id = bFirst + 4
+r.rating = 5
+
 
